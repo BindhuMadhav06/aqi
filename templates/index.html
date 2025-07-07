@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Air Quality Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.2.1/dist/chartjs-plugin-zoom.min.js"></script>
+</head>
+    <div class="container mx-auto p-4">
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">Advanced Air Quality Dashboard</h1>
+            <div class="flex space-x-2">
+                <button id="theme-toggle" class="p-2 rounded">
+                    <span id="sun-icon" class="hidden">☀️</span>
+                    <span id="moon-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="flex space-x-4 mb-6">
+            <div>
+                <label for="city-select" class="block text-sm font-medium">City</label>
+                <select id="city-select" class="mt-1 p-2 border rounded">
+                    {% for city in ['Delhi', 'Mumbai', 'Bengaluru', 'Chennai', 'Kolkata', 'Hyderabad'] %}
+                        <option value="{{ city }}" {% if city == selected_city %}selected{% endif %}>{{ city }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label for="time-range-select" class="block text-sm font-medium">Time Range</label>
+                <select id="time-range-select" class="mt-1 p-2 border rounded">
+                    {% for range in [('6h', 'Last 6 Hours'), ('12h', 'Last 12 Hours'), ('24h', 'Last 24 Hours'), ('3d', 'Last 3 Days'), ('7d', 'Last 7 Days')] %}
+                        <option value="{{ range[0] }}" {% if range[0] == time_range %}selected{% endif %}>{{ range[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium">View</label>
+                <div class="flex space-x-2 mt-1">
+                    {% for view in ['overview', 'trends', 'pollutants', 'weather'] %}
+                        <button class="view-btn p-2 border rounded {% if view == view_type %}active bg-blue-500 text-white{% endif %}" data-view="{{ view }}">{{ view|capitalize }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% if error %}
+        <div id="error-panel" class="bg-red-100 dark:bg-red-900 p-4 rounded mb-6">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold">System Errors (1)</h3>
+                <button id="clear-errors" class="text-sm text-blue-600 dark:text-blue-400">Clear All</button>
+            </div>
+            <div class="mt-2">
+                <p>{{ error.code }}: {{ error.message }}</p>
+                {% if error.details %}
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ error.details }}</p>
+                {% endif %}
+                <p class="text-sm text-gray-600 dark:text-gray-400">Last updated: {{ last_updated[-8:] }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Air Quality Index</h3>
+                <div class="mt-2 flex items-center">
+                    {% if current_stats.icon %}
+                        <span class="text-2xl mr-2">{{ current_stats.icon }}</span>
+                    {% endif %}
+                    <span class="text-3xl font-bold">{{ current_stats.aqi|default('N/A') }}</span>
+                    <span class="ml-2">{{ current_stats.category|default('N/A') }}</span>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">PM2.5</h3>
+                <div class="mt-2">
+                    <span class="text-3xl font-bold">{{ current_stats.pm25|round(1)|default('N/A') }}</span>
+                    <span class="text-sm">μg/m³</span>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Temperature</h3>
+                <div class="mt-2">
+                    <span class="text-3xl font-bold">{{ current_stats.temperature|round(1)|default('N/A') }}</span>
+                    <span class="text-sm">°C</span>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Wind Speed</h3>
+                <div class="mt-2">
+                    <span class="text-3xl font-bold">{{ current_stats.windSpeed|round(1)|default('N/A') }}</span>
+                    <span class="text-sm">m/s</span>
+                </div>
+            </div>
+        </div>
+
+        {% if view_type == 'overview' %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">{{ selected_pollutant }} Trend Over Time</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="timeSeriesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Current Pollutant Levels</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+
+            {% if time_series_base64 %}
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">{{ selected_pollutant }} Prediction Comparison</h3>
+                <div class="chart-container mt-2">
+                    <img src="data:image/png;base64,{{ time_series_base64 }}" alt="Prediction Comparison">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if view_type == 'trends' %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Pollutant Trends</h3>
+                <div class="mt-2">
+                    {% for pollutant, data in pollutant_trends.items() %}
+                    <div class="flex justify-between items-center p-2 border-b">
+                        <span>{{ pollutant }}</span>
+                        <span>
+                            {% if data.trend == 'up' %}↑{% elif data.trend == 'down' %}↓{% else %}–{% endif %}
+                        </span>
+                        <span>{{ data.current }}</span>
+                        <span>Change: {{ data.change|round(2) }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Hourly {{ selected_pollutant }} Distribution</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="hourlyDistributionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Future {{ selected_pollutant }} Predictions (Next 24 Hours)</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="futurePredictionsChart"></canvas>
+                </div>
+                {% if future_pred_base64 %}
+                <div class="mt-2 flex space-x-2">
+                    <a href="data:image/png;base64,{{ future_pred_base64 }}" download="future_predictions.png" class="text-blue-600 dark:text-blue-400">Download Plot</a>
+                    <a href="/export_predictions?pollutant={{ selected_pollutant }}&predictions={{ future_predictions }}" class="text-blue-600 dark:text-blue-400">Download Predictions as CSV</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if view_type == 'pollutants' %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Select Pollutant</h3>
+                <div class="flex space-x-2 mt-2">
+                    {% for pollutant in ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3'] %}
+                        <button class="pollutant-btn p-2 border rounded {% if pollutant == selected_pollutant %}active bg-blue-500 text-white{% endif %}" data-pollutant="{{ pollutant }}">{{ pollutant }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">All Pollutants Over Time</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="multiPollutantChart"></canvas>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if view_type == 'weather' %}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">Weather Conditions</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="weatherChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+                <h3 class="text-lg font-semibold">PM2.5 vs Weather Correlation</h3>
+                <div class="chart-container mt-2">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <footer class="text-center text-sm text-gray-600 dark:text-gray-400">
+            Advanced Air Quality Monitoring System | Real-time Data Analysis
+            <br>
+            Last updated: {{ last_updated }} | Showing data for {{ selected_city }} ({{ time_range }})
+        </footer>
+    </div>
+
+    <script id="dashboard-data" type="application/json">
+        {{ dashboard_data_json|safe }}
+    </script>
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
