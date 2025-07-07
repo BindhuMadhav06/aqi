@@ -9,4 +9,4 @@ gunicorn==21.2.0
 Werkzeug==2.3.7
 setuptools>=65.0.0
 wheel>=0.38.0
-pip>=25.0.0
+pip>=22.0.0
