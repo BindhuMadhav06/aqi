@@ -423,162 +423,220 @@ def start_cleanup_task():
     cleanup_thread = threading.Thread(target=cleanup_loop, daemon=True)
     cleanup_thread.start()
 
+# Error handler for 500 errors
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({
+        'error': 'Internal Server Error',
+        'message': 'The server encountered an internal error and was unable to complete your request.',
+        'code': 500
+    }), 500
+
+# Error handler for 404 errors
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        'error': 'Not Found',
+        'message': 'The requested resource was not found.',
+        'code': 404
+    }), 404
+
+# Health check endpoint
+@app.route('/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.now().isoformat(),
+        'version': '1.0.0'
+    })
+
 start_cleanup_task()
 
 @app.route('/')
 def index():
     """Optimized main route"""
-    predictor = OptimizedAQIPredictor(n_steps=3, n_features=1)
-    selected_city = request.args.get('city', 'Delhi')
-    selected_pollutant = request.args.get('pollutant', 'PM2.5')
-    time_range = request.args.get('timeRange', '24h')
-    view_type = request.args.get('view', 'overview')
+    try:
+        predictor = OptimizedAQIPredictor(n_steps=3, n_features=1)
+        selected_city = request.args.get('city', 'Delhi')
+        selected_pollutant = request.args.get('pollutant', 'PM2.5')
+        time_range = request.args.get('timeRange', '24h')
+        view_type = request.args.get('view', 'overview')
 
-    last_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        last_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    # Load data
-    data_info, error = predictor.load_data(station_city=selected_city)
-    if error:
-        return render_template('index.html', error=error, 
-                            data_info={'pollutants': ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']}, 
-                            last_updated=last_updated,
-                            selected_city=selected_city,
-                            selected_pollutant=selected_pollutant,
-                            time_range=time_range,
-                            view_type=view_type)
-
-    # Process data in parallel
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        future_filtered = executor.submit(predictor.filter_data, time_range)
-        
-        filtered_data, error = future_filtered.result()
+        # Load data
+        data_info, error = predictor.load_data(station_city=selected_city)
         if error:
-            return render_template('index.html', error=error, data_info=data_info, 
+            return render_template('index.html', error=error, 
+                                data_info={'pollutants': ['PM2.5', 'PM10', 'SO2', 'NO2', 'CO', 'O3']}, 
                                 last_updated=last_updated,
                                 selected_city=selected_city,
                                 selected_pollutant=selected_pollutant,
                                 time_range=time_range,
                                 view_type=view_type)
 
-        # Process other data concurrently
-        future_stats = executor.submit(predictor.get_current_stats, filtered_data)
-        future_trends = executor.submit(predictor.get_pollutant_trends, filtered_data)
-        future_radar = executor.submit(predictor.get_radar_data, filtered_data)
-        future_hourly = executor.submit(predictor.get_hourly_distribution, filtered_data, selected_pollutant)
-        future_predictions = executor.submit(predictor.get_simple_predictions, filtered_data, selected_pollutant)
+        # Process data in parallel
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            future_filtered = executor.submit(predictor.filter_data, time_range)
+            
+            filtered_data, error = future_filtered.result()
+            if error:
+                return render_template('index.html', error=error, data_info=data_info, 
+                                    last_updated=last_updated,
+                                    selected_city=selected_city,
+                                    selected_pollutant=selected_pollutant,
+                                    time_range=time_range,
+                                    view_type=view_type)
 
-        # Get results
-        current_stats, error = future_stats.result()
-        if error:
-            current_stats = {}
+            # Process other data concurrently
+            future_stats = executor.submit(predictor.get_current_stats, filtered_data)
+            future_trends = executor.submit(predictor.get_pollutant_trends, filtered_data)
+            future_radar = executor.submit(predictor.get_radar_data, filtered_data)
+            future_hourly = executor.submit(predictor.get_hourly_distribution, filtered_data, selected_pollutant)
+            future_predictions = executor.submit(predictor.get_simple_predictions, filtered_data, selected_pollutant)
 
-        pollutant_trends, error = future_trends.result()
-        if error:
-            pollutant_trends = {}
+            # Get results
+            current_stats, error = future_stats.result()
+            if error:
+                current_stats = {}
 
-        radar_data, error = future_radar.result()
-        if error:
-            radar_data = []
+            pollutant_trends, error = future_trends.result()
+            if error:
+                pollutant_trends = {}
 
-        hourly_distribution, error = future_hourly.result()
-        if error:
-            hourly_distribution = []
+            radar_data, error = future_radar.result()
+            if error:
+                radar_data = []
 
-        future_predictions, _, error = future_predictions.result()
-        if error:
-            future_predictions = []
+            hourly_distribution, error = future_hourly.result()
+            if error:
+                hourly_distribution = []
 
-    # Generate plots (optional, only if requested)
-    time_series_base64, future_pred_base64 = None, None
-    if view_type in ['overview', 'trends']:
-        time_series_base64, future_pred_base64, error = predictor.generate_simple_plots(
-            filtered_data, future_predictions, selected_pollutant, selected_city)
+            future_predictions, _, error = future_predictions.result()
+            if error:
+                future_predictions = []
 
-    # Prepare dashboard data
-    dashboard_data = {
-        'filteredData': filtered_data,
-        'radarData': radar_data,
-        'hourlyDistribution': hourly_distribution,
-        'futurePredictions': future_predictions,
-        'selectedPollutant': selected_pollutant
-    }
+        # Generate plots (optional, only if requested)
+        time_series_base64, future_pred_base64 = None, None
+        if view_type in ['overview', 'trends']:
+            time_series_base64, future_pred_base64, error = predictor.generate_simple_plots(
+                filtered_data, future_predictions, selected_pollutant, selected_city)
 
-    return render_template(
-        'index.html',
-        data_info=data_info,
-        filtered_data=filtered_data,
-        current_stats=current_stats,
-        pollutant_trends=pollutant_trends,
-        radar_data=radar_data,
-        hourly_distribution=hourly_distribution,
-        future_predictions=future_predictions,
-        time_series_base64=time_series_base64,
-        future_pred_base64=future_pred_base64,
-        selected_city=selected_city,
-        selected_pollutant=selected_pollutant,
-        time_range=time_range,
-        view_type=view_type,
-        last_updated=last_updated,
-        dashboard_data_json=json.dumps(dashboard_data)
-    )
+        # Prepare dashboard data
+        dashboard_data = {
+            'filteredData': filtered_data,
+            'radarData': radar_data,
+            'hourlyDistribution': hourly_distribution,
+            'futurePredictions': future_predictions,
+            'selectedPollutant': selected_pollutant
+        }
+
+        return render_template(
+            'index.html',
+            data_info=data_info,
+            filtered_data=filtered_data,
+            current_stats=current_stats,
+            pollutant_trends=pollutant_trends,
+            radar_data=radar_data,
+            hourly_distribution=hourly_distribution,
+            future_predictions=future_predictions,
+            time_series_base64=time_series_base64,
+            future_pred_base64=future_pred_base64,
+            selected_city=selected_city,
+            selected_pollutant=selected_pollutant,
+            time_range=time_range,
+            view_type=view_type,
+            last_updated=last_updated,
+            dashboard_data_json=json.dumps(dashboard_data)
+        )
+    except Exception as e:
+        # Log the error and return a safe response
+        print(f"Error in index route: {str(e)}")
+        return jsonify({
+            'error': 'Application Error',
+            'message': 'An unexpected error occurred. Please try again later.',
+            'code': 500
+        }), 500
 
 @app.route('/api/dashboard')
 def api_dashboard():
     """Fast API endpoint for dashboard data"""
-    predictor = OptimizedAQIPredictor(n_steps=3, n_features=1)
-    selected_city = request.args.get('city', 'Delhi')
-    selected_pollutant = request.args.get('pollutant', 'PM2.5')
-    time_range = request.args.get('timeRange', '24h')
+    try:
+        predictor = OptimizedAQIPredictor(n_steps=3, n_features=1)
+        selected_city = request.args.get('city', 'Delhi')
+        selected_pollutant = request.args.get('pollutant', 'PM2.5')
+        time_range = request.args.get('timeRange', '24h')
 
-    data_info, error = predictor.load_data(station_city=selected_city)
-    if error:
-        return jsonify({'error': error}), 500
+        data_info, error = predictor.load_data(station_city=selected_city)
+        if error:
+            return jsonify({'error': error}), 500
 
-    filtered_data, error = predictor.filter_data(time_range)
-    if error:
-        return jsonify({'error': error}), 500
+        filtered_data, error = predictor.filter_data(time_range)
+        if error:
+            return jsonify({'error': error}), 500
 
-    radar_data, error = predictor.get_radar_data(filtered_data)
-    if error:
-        radar_data = []
+        radar_data, error = predictor.get_radar_data(filtered_data)
+        if error:
+            radar_data = []
 
-    hourly_distribution, error = predictor.get_hourly_distribution(filtered_data, selected_pollutant)
-    if error:
-        hourly_distribution = []
+        hourly_distribution, error = predictor.get_hourly_distribution(filtered_data, selected_pollutant)
+        if error:
+            hourly_distribution = []
 
-    future_predictions, _, error = predictor.get_simple_predictions(filtered_data, selected_pollutant)
-    if error:
-        future_predictions = []
+        future_predictions, _, error = predictor.get_simple_predictions(filtered_data, selected_pollutant)
+        if error:
+            future_predictions = []
 
-    return jsonify({
-        'filteredData': filtered_data,
-        'radarData': radar_data,
-        'hourlyDistribution': hourly_distribution,
-        'futurePredictions': future_predictions,
-        'selectedPollutant': selected_pollutant
-    })
+        return jsonify({
+            'filteredData': filtered_data,
+            'radarData': radar_data,
+            'hourlyDistribution': hourly_distribution,
+            'futurePredictions': future_predictions,
+            'selectedPollutant': selected_pollutant
+        })
+    except Exception as e:
+        print(f"Error in api_dashboard route: {str(e)}")
+        return jsonify({
+            'error': 'API Error',
+            'message': 'Failed to fetch dashboard data',
+            'details': str(e)
+        }), 500
 
 @app.route('/export_predictions')
 def export_predictions():
     """Export predictions to CSV"""
-    pollutant = request.args.get('pollutant', 'PM2.5')
-    predictions = request.args.getlist('predictions', type=float)
-    
-    df = pd.DataFrame({
-        'Hour': range(1, len(predictions) + 1),
-        f'{pollutant}_Prediction': predictions
-    })
-    
-    buffer = io.StringIO()
-    df.to_csv(buffer, index=False)
-    buffer.seek(0)
-    
-    return send_file(
-        io.BytesIO(buffer.getvalue().encode()),
-        mimetype='text/csv',
-        as_attachment=True,
-        download_name=f'{pollutant}_future_predictions.csv'
-    )
+    try:
+        pollutant = request.args.get('pollutant', 'PM2.5')
+        predictions = request.args.getlist('predictions', type=float)
+        
+        if not predictions:
+            return jsonify({'error': 'No predictions provided'}), 400
+        
+        df = pd.DataFrame({
+            'Hour': range(1, len(predictions) + 1),
+            f'{pollutant}_Prediction': predictions
+        })
+        
+        buffer = io.StringIO()
+        df.to_csv(buffer, index=False)
+        buffer.seek(0)
+        
+        return send_file(
+            io.BytesIO(buffer.getvalue().encode()),
+            mimetype='text/csv',
+            as_attachment=True,
+            download_name=f'{pollutant}_future_predictions.csv'
+        )
+    except Exception as e:
+        print(f"Error in export_predictions route: {str(e)}")
+        return jsonify({
+            'error': 'Export Error',
+            'message': 'Failed to export predictions',
+            'details': str(e)
+        }), 500
 
 if __name__ == "__main__":
-    app.run(debug=True, threaded=True)
+    # Get port from environment variable or use default
+    port = int(os.environ.get('PORT', 5000))
+    # Bind to all interfaces for deployment
+    app.run(host='0.0.0.0', port=port, debug=False, threaded=True)
