@@ -4,11 +4,14 @@ services:
     env: python
     region: singapore
     plan: free
-    buildCommand: /opt/render/project/src/.venv/bin/python3.9 -m pip install --upgrade pip && pip install -r requirements.txt
+    buildCommand: |
+      /opt/render/project/src/.venv/bin/python3.9 -m pip install --upgrade pip
+      /opt/render/project/src/.venv/bin/python3.9 -m pip install setuptools wheel
+      /opt/render/project/src/.venv/bin/python3.9 -m pip install -r requirements.txt
     startCommand: gunicorn aqi_prediction_optimized:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --log-level info
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9
+        value: 3.9.18  # Specify exact version for consistency
       - key: FLASK_ENV
         value: production
       - key: PYTHONUNBUFFERED

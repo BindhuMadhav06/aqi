@@ -1,4 +1,5 @@
 # aqi_prediction_optimized.py
+from venv import logger
 import matplotlib
 matplotlib.use('Agg')
 import pandas as pd
@@ -634,7 +635,23 @@ def export_predictions():
             'message': 'Failed to export predictions',
             'details': str(e)
         }), 500
-
+@app.route('/')
+def build_lstm_model(self):
+    try:
+        # Limit TensorFlow memory usage
+        tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[0], True) if tf.config.list_physical_devices('GPU') else None
+        model = Sequential([
+            LSTM(50, activation='relu', input_shape=(self.n_steps, self.n_features), return_sequences=True),
+            Dropout(0.2),
+            LSTM(50, activation='relu'),
+            Dropout(0.2),
+            Dense(1)
+        ])
+        model.compile(optimizer=Adam(learning_rate=0.001), loss='mse')
+        return model
+    except Exception as e:
+        logger.error(f"Failed to build LSTM model: {e}")
+        return None
 if __name__ == "__main__":
     # Get port from environment variable or use default
     port = int(os.environ.get('PORT', 5000))
