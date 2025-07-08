@@ -315,6 +315,7 @@ class AQIPredictor:
         
         plt.tight_layout()
         plt.show()
+        
     
     def predict_future(self, n_future_steps=24):
         """Predict future values"""
