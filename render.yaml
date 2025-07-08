@@ -4,12 +4,16 @@ services:
     env: python
     region: singapore
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn aqi_prediction:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    buildCommand: /opt/render/project/src/.venv/bin/python3.9 -m pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn aqi_prediction_optimized:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120 --log-level info
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.12
+        value: 3.9
       - key: FLASK_ENV
         value: production
       - key: PYTHONUNBUFFERED
         value: 1
+      - key: PORT
+        value: 10000
+      - key: TF_ENABLE_ONEDNN_OPTS
+        value: 0

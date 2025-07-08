@@ -135,3 +135,62 @@ function renderHourlyDistributionChart(hourlyData, pollutant) {
         }
     });
 }
+function renderTrendLineChart(data, pollutant) {
+    const canvas = document.getElementById('trendLineChart');
+    if (!canvas || !data || data.length === 0) {
+        console.warn('TrendLineChart: Missing canvas or data');
+        return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    const colors = {
+        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
+        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
+        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
+        line: '#10b981'
+    };
+
+    const labels = data.map(d => d.timestamp);
+    const values = data.map(d => d[pollutant]);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: `${pollutant} Trend`,
+                data: values,
+                borderColor: colors.line,
+                backgroundColor: colors.line + '20',
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        parser: 'YYYY-MM-DD HH:mm:ss',
+                        tooltipFormat: 'MMM D, h:mm A',
+                        unit: 'hour'
+                    },
+                    title: { display: true, text: 'Time', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                }
+            },
+            plugins: {
+                legend: { labels: { color: colors.text } }
+            }
+        }
+    });
+}

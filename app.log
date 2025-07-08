@@ -268,3 +268,535 @@ Traceback (most recent call last):
 FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\madhav\\arshu\\arshu\\static\\favicon.ico'
 2025-07-08 12:40:24,783 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
 2025-07-08 12:40:24,783 - INFO - 127.0.0.1 - - [08/Jul/2025 12:40:24] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-07-08 15:18:13,371 - INFO - Background cleanup task started
+2025-07-08 15:18:13,373 - INFO - Starting Flask application on port 5000
+2025-07-08 15:18:13,506 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.40.70:5000
+2025-07-08 15:18:13,506 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:18:18,233 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:18:18,282 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:18:18,307 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:18:24,462 - INFO - 127.0.0.1 - - [08/Jul/2025 15:18:24] "GET / HTTP/1.1" 200 -
+2025-07-08 15:18:26,628 - INFO - 127.0.0.1 - - [08/Jul/2025 15:18:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-08 15:18:26,636 - INFO - 127.0.0.1 - - [08/Jul/2025 15:18:26] "[36mGET /static/js/charts.js HTTP/1.1[0m" 304 -
+2025-07-08 15:18:26,712 - INFO - 127.0.0.1 - - [08/Jul/2025 15:18:26] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-08 15:19:05,694 - INFO - Background cleanup task started
+2025-07-08 15:19:05,694 - INFO - Starting Flask application on port 5000
+2025-07-08 15:19:05,728 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.40.70:5000
+2025-07-08 15:19:05,728 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:19:08,386 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:08,435 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:08,451 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:12,758 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:12] "GET / HTTP/1.1" 200 -
+2025-07-08 15:19:24,910 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:24,986 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:25,062 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:25,079 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:25] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:25,842 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:26,022 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:26,112 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:26,147 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:26] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:26,632 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:26,744 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:26,799 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:26,825 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:26] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:27,613 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:27,691 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:27,735 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:27,757 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:27] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:30,887 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:30,953 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:30,992 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:31,010 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:31] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:31,761 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:31,884 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:32,014 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:32,062 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:32] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:19:32,527 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:19:32,670 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:19:32,732 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:19:32,758 - INFO - 127.0.0.1 - - [08/Jul/2025 15:19:32] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:22:26,750 - INFO - Background cleanup task started
+2025-07-08 15:22:26,750 - INFO - Starting Flask application on port 5000
+2025-07-08 15:22:26,799 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.40.70:5000
+2025-07-08 15:22:26,799 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:22:30,209 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:22:30,267 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:22:30,292 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:22:35,695 - INFO - 127.0.0.1 - - [08/Jul/2025 15:22:35] "GET / HTTP/1.1" 200 -
+2025-07-08 15:22:41,002 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:22:41,121 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:22:41,188 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:22:41,213 - INFO - 127.0.0.1 - - [08/Jul/2025 15:22:41] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:22:42,862 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:22:42,962 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:22:43,029 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:22:43,053 - INFO - 127.0.0.1 - - [08/Jul/2025 15:22:43] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:22:43,830 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:22:43,955 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:22:44,047 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:22:44,105 - INFO - 127.0.0.1 - - [08/Jul/2025 15:22:44] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:22:44,908 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:22:44,982 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:22:45,024 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:22:45,040 - INFO - 127.0.0.1 - - [08/Jul/2025 15:22:45] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:23:34,256 - INFO - Background cleanup task started
+2025-07-08 15:23:34,256 - INFO - Starting Flask application on port 5000
+2025-07-08 15:23:34,340 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.40.70:5000
+2025-07-08 15:23:34,340 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:23:38,222 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:23:38,263 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:23:38,284 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:23:43,426 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:43] "GET / HTTP/1.1" 200 -
+2025-07-08 15:23:45,649 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:45] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-08 15:23:45,649 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:45] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-08 15:23:45,674 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-08 15:23:49,522 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:23:49,660 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:23:49,735 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:23:49,760 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:49] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:23:50,862 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:23:50,969 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:23:51,011 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:23:51,027 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:51] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:23:51,860 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:23:51,951 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:23:51,992 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:23:52,042 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:52] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:23:52,712 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:23:52,844 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:23:52,926 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:23:52,993 - INFO - 127.0.0.1 - - [08/Jul/2025 15:23:52] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:24:48,693 - INFO - Background cleanup task started
+2025-07-08 15:24:48,693 - INFO - Starting Flask application on port 5000
+2025-07-08 15:24:48,735 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.40.70:5000
+2025-07-08 15:24:48,735 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:24:56,347 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:24:56,400 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:24:56,427 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:25:01,877 - INFO - 127.0.0.1 - - [08/Jul/2025 15:25:01] "GET / HTTP/1.1" 200 -
+2025-07-08 15:25:05,608 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:25:05,733 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:25:05,816 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:25:05,851 - INFO - 127.0.0.1 - - [08/Jul/2025 15:25:05] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:25:07,358 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:25:07,441 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:25:07,483 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:25:07,499 - INFO - 127.0.0.1 - - [08/Jul/2025 15:25:07] "GET /api/dashboard?city=Delhi&time_range=24h&pollutant=PM2.5 HTTP/1.1" 200 -
+2025-07-08 15:50:03,565 - INFO - Background cleanup task started
+2025-07-08 15:50:03,566 - INFO - Starting Flask application on port 10000
+2025-07-08 15:50:03,642 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10000
+ * Running on http://10.73.96.70:10000
+2025-07-08 15:50:03,643 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 15:50:08,418 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:08,468 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:08,494 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:10,418 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:10,423 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:10,568 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:10,573 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:10,617 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:10,631 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:10,780 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:10,790 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:11,086 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:11,087 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:11,171 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:11,172 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:11,174 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:11,202 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:11] "GET / HTTP/1.1" 200 -
+2025-07-08 15:50:11,721 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:11] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-08 15:50:11,721 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-08 15:50:11,723 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:11] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-08 15:50:12,049 - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 487, in favicon
+    return send_file(os.path.join(app.root_path, 'static', 'favicon.ico'), mimetype='image/x-icon')
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 504, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\werkzeug\utils.py", line 427, in send_file
+    stat = os.stat(path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\madhav\\arshu\\arshu\\static\\favicon.ico'
+2025-07-08 15:50:12,056 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-07-08 15:50:12,057 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:12] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-07-08 15:50:22,472 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:22,537 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:22,569 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:22,913 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:22,916 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:23,201 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:23,203 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:23,479 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:23,481 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:23,799 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:23,801 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:24,245 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:24,246 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:24,701 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:24,703 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:24,705 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:24,708 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:24] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:24,737 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:24,812 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:24,846 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:25,215 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:25,216 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:25,524 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:25,525 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:25,809 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:25,810 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:26,096 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:26,097 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:26,524 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:26,526 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:26,965 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:26,966 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:26,968 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:26,971 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:26] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:26,995 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:27,086 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:27,121 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:27,560 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:27,561 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:27,839 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:27,840 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:28,115 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:28,117 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:28,396 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:28,402 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:28,815 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:28,815 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:29,241 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:29,242 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:29,243 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:29,246 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:29] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:29,260 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:29,334 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:29,359 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:29,764 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:29,765 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:30,134 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:30,135 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:30,464 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:30,465 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:30,748 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:30,750 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:31,155 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:31,156 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:31,585 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:31,585 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:31,587 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:31,591 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:31] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:31,601 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:31,672 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:31,704 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:32,115 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:32,116 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:32,396 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:32,397 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:32,677 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:32,678 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:32,963 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:32,964 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:33,299 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:33,301 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:33,779 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:33,780 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:33,782 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:33,785 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:33] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:33,810 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:33,881 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:33,908 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:34,349 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:34,351 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:34,694 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:34,695 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:35,012 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:35,013 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:35,289 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:35,290 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:35,575 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:35,577 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:36,342 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:36,344 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:36,346 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:36,353 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:36] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:36,362 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:36,465 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:36,509 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:36,949 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:36,949 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:37,222 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:37,223 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:37,520 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:37,521 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:37,974 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:37,975 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:38,412 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:38,412 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:38,884 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:38,886 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:38,886 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:38,890 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:38] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:38,907 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:38,978 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:39,004 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:39,337 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:39,338 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:39,697 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:39,698 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:40,026 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:40,027 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:40,397 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:40,399 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:40,798 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:40,799 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:41,210 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:41,213 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:41,214 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:41,218 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:41] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:41,232 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:41,295 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:41,321 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:41,675 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:41,675 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:42,079 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:42,080 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:42,473 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:42,474 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:43,133 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:43,139 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:43,689 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:43,691 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:44,105 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:44,106 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:44,107 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:44,109 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:44] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:44,117 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:44,188 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:44,217 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:44,603 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:44,605 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:45,007 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:45,008 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:45,501 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:45,502 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:45,952 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:45,953 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:46,387 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:46,388 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:46,666 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:46,666 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:46,667 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:46,669 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:46] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:46,678 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:46,725 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:46,746 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:47,030 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:47,031 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:47,316 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:47,316 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:47,749 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:47,751 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:48,179 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:48,182 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:48,639 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:48,643 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:48,993 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:48,994 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:48,995 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:48,997 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:48] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:49,005 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:49,050 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:49,072 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:49,346 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:49,347 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:49,628 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:49,629 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:49,973 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:49,975 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:50,405 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:50,406 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:50,813 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:50,815 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:51,166 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:51,167 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:51,168 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:51,170 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:51] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:51,177 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:51,229 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:51,256 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:51,669 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:51,670 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:52,004 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:52,004 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:52,447 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:52,448 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:52,897 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:52,898 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:53,335 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:53,336 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:53,651 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:53,653 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:53,653 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:53,656 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:53] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:53,662 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:53,704 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:53,727 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:54,056 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:54,056 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:54,378 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:54,380 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:54,847 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:54,848 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:55,270 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:55,272 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:55,641 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:55,642 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:55,938 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:55,938 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:55,939 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:55,941 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:55] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:55,948 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:55,988 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:56,008 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:56,409 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:56,410 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:56,904 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:56,905 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:57,316 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:57,318 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:50:57,967 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:57,969 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:50:58,283 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:58,283 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:50:58,678 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:58,679 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:50:58,680 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:50:58,682 - INFO - 127.0.0.1 - - [08/Jul/2025 15:50:58] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:50:58,689 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:50:58,748 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:50:58,773 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:50:59,167 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:59,168 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:50:59,581 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:59,583 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:50:59,972 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:50:59,973 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:00,441 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:00,441 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:00,737 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:00,738 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:01,049 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:01,050 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:01,052 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:01,056 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:01] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:51:01,080 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:51:01,188 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:51:01,216 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:51:01,617 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:01,618 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:51:02,038 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:02,039 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:51:02,354 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:02,356 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:02,632 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:02,633 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:02,902 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:02,902 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:03,184 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:03,185 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:03,186 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:03,189 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:03] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:51:03,200 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:51:03,269 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:51:03,314 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:51:03,786 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:03,787 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:51:04,234 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:04,236 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:51:04,620 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:04,621 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:04,985 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:04,987 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:05,351 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:05,352 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:05,784 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:05,786 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:05,787 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:05,790 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:05] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:51:05,803 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:51:05,879 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:51:05,911 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:51:06,348 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:06,350 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:51:06,768 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:06,769 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:51:07,053 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:07,054 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:07,374 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:07,374 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:07,681 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:07,681 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:08,213 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:08,214 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:08,215 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:08,218 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:08] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:51:08,233 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:51:08,306 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:51:08,343 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:51:08,817 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:08,819 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:51:09,196 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:09,197 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:51:09,494 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:09,494 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:09,591 - INFO - City changed to Delhi, clearing cache
+2025-07-08 15:51:09,708 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 15:51:09,740 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 15:51:10,318 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:10,328 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:10,981 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:10,983 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 15:51:11,775 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:11,778 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:12,107 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:12,110 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 15:51:12,539 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:12,541 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:12,544 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:12,548 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:12] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 15:51:12,677 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:12,679 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 15:51:13,061 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:13,062 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 15:51:13,427 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:13,430 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 15:51:13,862 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 15:51:13,863 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 15:51:13,863 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 15:51:13,867 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:13] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -

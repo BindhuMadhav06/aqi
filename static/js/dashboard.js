@@ -1,10 +1,9 @@
-// dashboard.js
-// Advanced AQI Dashboard - Frontend Logic
-
-// Global variables
 let charts = {};
 let currentTheme = 'light';
 let currentData = null;
+let predictionComparisonChart = null;
+let hourlyDistributionChart = null;
+let radarChart = null;
 
 // Initialize dashboard
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,14 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const data = JSON.parse(dataScript.textContent);
             if (data && Object.keys(data).length > 0) {
+                currentData = data;
                 renderCharts(
                     data.filteredData,
                     data.radarData,
-                    data.hourlyDistribution,
+                    data.hourlyDistributions,
                     data.futurePredictions,
-                    data.actualValues,
-                    data.predictedValues,
-                    data.selectedPollutant
+                    data.pollutants,
+                    getCurrentPollutant()
                 );
             } else {
                 showError('No initial data available.');
@@ -138,333 +137,12 @@ function getChartColors() {
         warning: '#f59e0b',
         info: '#06b6d4'
     };
-} 
-
-// Global variables to store chart instances
-let predictionComparisonChart = null;
-let hourlyDistributionChart = null;
-
-function renderPredictionComparisonChart(actual, predicted, pollutant) {
-    const canvas = document.getElementById('timeSeriesChart');
-    if (!canvas || !actual || !predicted || actual.length === 0 || predicted.length === 0) {
-        console.warn('PredictionComparisonChart: Missing canvas or data');
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    
-    // Destroy existing chart if it exists
-    if (predictionComparisonChart) {
-        predictionComparisonChart.destroy();
-    }
-
-    const colors = {
-        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
-        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
-        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
-        primary: '#3b82f6',
-        danger: '#ef4444'
-    };
-
-    const labels = Array.from({ length: actual.length }, (_, i) => i + 1);
-
-    // Create new chart and store reference
-    predictionComparisonChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Actual',
-                    data: actual,
-                    borderColor: colors.primary,
-                    backgroundColor: colors.primary + '20',
-                    fill: false,
-                    tension: 0.1,
-                    pointRadius: 3,
-                    pointHoverRadius: 5
-                },
-                {
-                    label: 'Predicted',
-                    data: predicted,
-                    borderColor: colors.danger,
-                    backgroundColor: colors.danger + '20',
-                    fill: false,
-                    tension: 0.1,
-                    pointRadius: 3,
-                    pointHoverRadius: 5
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            scales: {
-                x: {
-                    display: true,
-                    title: { 
-                        display: true, 
-                        text: 'Hours', 
-                        color: colors.text,
-                        font: {
-                            size: 12,
-                            weight: 'bold'
-                        }
-                    },
-                    ticks: { 
-                        color: colors.text,
-                        maxTicksLimit: 10
-                    },
-                    grid: { 
-                        color: colors.grid,
-                        drawBorder: false
-                    }
-                },
-                y: {
-                    display: true,
-                    title: { 
-                        display: true, 
-                        text: `${pollutant} Concentration (μg/m³)`, 
-                        color: colors.text,
-                        font: {
-                            size: 12,
-                            weight: 'bold'
-                        }
-                    },
-                    ticks: { 
-                        color: colors.text,
-                        callback: function(value) {
-                            return value.toFixed(1);
-                        }
-                    },
-                    grid: { 
-                        color: colors.grid,
-                        drawBorder: false
-                    }
-                }
-            },
-            plugins: {
-                legend: { 
-                    labels: { 
-                        color: colors.text,
-                        usePointStyle: true,
-                        padding: 20
-                    },
-                    position: 'top'
-                },
-                tooltip: {
-                    backgroundColor: colors.background,
-                    titleColor: colors.text,
-                    bodyColor: colors.text,
-                    borderColor: colors.grid,
-                    borderWidth: 1,
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
-                        }
-                    }
-                },
-                zoom: {
-                    zoom: {
-                        wheel: { enabled: true },
-                        pinch: { enabled: true },
-                        mode: 'xy'
-                    },
-                    pan: {
-                        enabled: true,
-                        mode: 'xy'
-                    }
-                }
-            },
-            // Add layout padding to prevent overflow
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
-                }
-            }
-        }
-    });
 }
 
-function renderHourlyDistributionChart(hourlyData, pollutant) {
-    const canvas = document.getElementById('hourlyDistributionChart');
-    if (!canvas || !hourlyData || hourlyData.length === 0) {
-        console.warn('HourlyDistributionChart: Missing canvas or data');
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    
-    // Destroy existing chart if it exists
-    if (hourlyDistributionChart) {
-        hourlyDistributionChart.destroy();
-    }
-
-    const colors = {
-        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
-        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
-        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
-        primary: '#3498db'
-    };
-
-    const labels = hourlyData.map(d => `${d.hour}:00`);
-    const averages = hourlyData.map(d => d.average);
-
-    // Create new chart and store reference
-    hourlyDistributionChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: `Hourly ${pollutant} Average`,
-                data: averages,
-                backgroundColor: colors.primary + '80',
-                borderColor: colors.primary,
-                borderWidth: 1,
-                borderRadius: 4,
-                borderSkipped: false
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            scales: {
-                x: {
-                    display: true,
-                    title: { 
-                        display: true, 
-                        text: 'Hour of Day', 
-                        color: colors.text,
-                        font: {
-                            size: 12,
-                            weight: 'bold'
-                        }
-                    },
-                    ticks: { 
-                        color: colors.text,
-                        maxRotation: 45
-                    },
-                    grid: { 
-                        color: colors.grid,
-                        drawBorder: false
-                    }
-                },
-                y: {
-                    display: true,
-                    title: { 
-                        display: true, 
-                        text: `${pollutant} (μg/m³)`, 
-                        color: colors.text,
-                        font: {
-                            size: 12,
-                            weight: 'bold'
-                        }
-                    },
-                    ticks: { 
-                        color: colors.text,
-                        callback: function(value) {
-                            return value.toFixed(1);
-                        }
-                    },
-                    grid: { 
-                        color: colors.grid,
-                        drawBorder: false
-                    },
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                legend: { 
-                    labels: { 
-                        color: colors.text,
-                        usePointStyle: true,
-                        padding: 20
-                    },
-                    position: 'top'
-                },
-                tooltip: {
-                    backgroundColor: colors.background,
-                    titleColor: colors.text,
-                    bodyColor: colors.text,
-                    borderColor: colors.grid,
-                    borderWidth: 1,
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
-                        }
-                    }
-                }
-            },
-            // Add layout padding to prevent overflow
-            layout: {
-                padding: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
-                }
-            }
-        }
-    });
-}
-
-// Function to update chart data when city changes
-function updateChartsForCity(cityData) {
-    // Update prediction comparison chart
-    if (predictionComparisonChart && cityData.actual && cityData.predicted) {
-        predictionComparisonChart.data.datasets[0].data = cityData.actual;
-        predictionComparisonChart.data.datasets[1].data = cityData.predicted;
-        predictionComparisonChart.data.labels = Array.from({ length: cityData.actual.length }, (_, i) => i + 1);
-        predictionComparisonChart.update('none'); // 'none' for no animation
-    }
-
-    // Update hourly distribution chart
-    if (hourlyDistributionChart && cityData.hourlyData) {
-        hourlyDistributionChart.data.labels = cityData.hourlyData.map(d => `${d.hour}:00`);
-        hourlyDistributionChart.data.datasets[0].data = cityData.hourlyData.map(d => d.average);
-        hourlyDistributionChart.update('none'); // 'none' for no animation
-    }
-}
-
-// Function to clean up charts when needed
-function destroyCharts() {
-    if (predictionComparisonChart) {
-        predictionComparisonChart.destroy();
-        predictionComparisonChart = null;
-    }
-    if (hourlyDistributionChart) {
-        hourlyDistributionChart.destroy();
-        hourlyDistributionChart = null;
-    }
-}
-
-// Add resize event listener to handle responsive behavior
-window.addEventListener('resize', function() {
-    if (predictionComparisonChart) {
-        predictionComparisonChart.resize();
-    }
-    if (hourlyDistributionChart) {
-        hourlyDistributionChart.resize();
-    }
-});
-
-// Chart Rendering Functions
-function renderCharts(filteredData, radarData, hourlyDistribution, futurePredictions, actualValues, predictedValues, selectedPollutant) {
-    console.log('Rendering charts with:', { filteredData, radarData, hourlyDistribution, futurePredictions, actualValues, predictedValues, selectedPollutant });
-    currentData = { filteredData, radarData, hourlyDistribution, futurePredictions, actualValues, predictedValues, selectedPollutant };
-    Object.values(charts).forEach(chart => chart?.destroy?.());
-    charts = {};
+function renderCharts(filteredData, radarData, hourlyDistributions, futurePredictions, pollutants, selectedPollutant) {
+    console.log('Rendering charts with:', { filteredData, radarData, hourlyDistributions, futurePredictions, pollutants, selectedPollutant });
+    currentData = { filteredData, radarData, hourlyDistributions, futurePredictions, pollutants, selectedPollutant };
+    destroyCharts();
 
     const viewType = getCurrentView();
     try {
@@ -472,11 +150,11 @@ function renderCharts(filteredData, radarData, hourlyDistribution, futurePredict
             case 'overview':
                 renderTimeSeriesChart(filteredData, selectedPollutant);
                 renderRadarChart(radarData);
-                renderPredictionComparisonChart(actualValues, predictedValues, selectedPollutant);
+                renderPredictionComparisonChart(filteredData, futurePredictions[selectedPollutant], selectedPollutant);
                 break;
             case 'trends':
-                renderHourlyDistributionChart(hourlyDistribution, selectedPollutant);
-                renderFuturePredictionsChart(futurePredictions, selectedPollutant);
+                renderHourlyDistributionChart(hourlyDistributions[selectedPollutant], selectedPollutant);
+                renderFuturePredictionsChart(futurePredictions[selectedPollutant], selectedPollutant);
                 break;
             case 'pollutants':
                 renderMultiPollutantChart(filteredData);
@@ -509,6 +187,7 @@ function renderTimeSeriesChart(data, pollutant) {
     const labels = data.map(d => new Date(d.datetime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
     const values = data.map(d => d[pollutant] || 0);
 
+    if (charts.timeSeries) charts.timeSeries.destroy();
     charts.timeSeries = new Chart(ctx, {
         type: 'line',
         data: {
@@ -580,7 +259,8 @@ function renderRadarChart(data) {
     const labels = data.map(d => d.subject);
     const values = data.map(d => d.value);
 
-    charts.radar = new Chart(ctx, {
+    if (radarChart) radarChart.destroy();
+    radarChart = new Chart(ctx, {
         type: 'radar',
         data: {
             labels: labels,
@@ -623,9 +303,124 @@ function renderRadarChart(data) {
     });
 }
 
-function renderHourlyDistributionChart(data, pollutant) {
+function renderPredictionComparisonChart(data, predictions, pollutant) {
+    const canvas = document.getElementById('predictionComparisonChart');
+    if (!canvas || !data || !predictions || data.length === 0 || predictions.length === 0) {
+        console.warn('PredictionComparisonChart: Missing canvas or data');
+        showError('Cannot render Prediction Comparison Chart: Missing data or canvas.');
+        return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    const colors = getChartColors();
+
+    const labels = Array.from({ length: data.length }, (_, i) => i + 1);
+    const actual = data.map(d => d[pollutant] || 0);
+
+    if (predictionComparisonChart) predictionComparisonChart.destroy();
+    predictionComparisonChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Actual',
+                    data: actual,
+                    borderColor: colors.primary,
+                    backgroundColor: colors.primary + '20',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                },
+                {
+                    label: 'Predicted',
+                    data: predictions,
+                    borderColor: colors.danger,
+                    backgroundColor: colors.danger + '20',
+                    fill: false,
+                    tension: 0.1,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: { 
+                        display: true, 
+                        text: 'Hours', 
+                        color: colors.text,
+                        font: { size: 12, weight: 'bold' }
+                    },
+                    ticks: { color: colors.text, maxTicksLimit: 10 },
+                    grid: { color: colors.grid, drawBorder: false }
+                },
+                y: {
+                    display: true,
+                    title: { 
+                        display: true, 
+                        text: `${pollutant} Concentration (μg/m³)`, 
+                        color: colors.text,
+                        font: { size: 12, weight: 'bold' }
+                    },
+                    ticks: { 
+                        color: colors.text,
+                        callback: function(value) {
+                            return value.toFixed(1);
+                        }
+                    },
+                    grid: { color: colors.grid, drawBorder: false }
+                }
+            },
+            plugins: {
+                legend: { 
+                    labels: { 
+                        color: colors.text,
+                        usePointStyle: true,
+                        padding: 20
+                    },
+                    position: 'top'
+                },
+                tooltip: {
+                    backgroundColor: colors.background,
+                    titleColor: colors.text,
+                    bodyColor: colors.text,
+                    borderColor: colors.grid,
+                    borderWidth: 1,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
+                        }
+                    }
+                },
+                zoom: {
+                    zoom: {
+                        wheel: { enabled: true },
+                        pinch: { enabled: true },
+                        mode: 'xy'
+                    },
+                    pan: {
+                        enabled: true,
+                        mode: 'xy'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function renderHourlyDistributionChart(hourlyData, pollutant) {
     const canvas = document.getElementById('hourlyDistributionChart');
-    if (!canvas || !data || data.length === 0) {
+    if (!canvas || !hourlyData || hourlyData.length === 0) {
         console.warn('HourlyDistributionChart: Missing canvas or data');
         showError('Cannot render Hourly Distribution Chart: Missing data or canvas.');
         return;
@@ -634,10 +429,11 @@ function renderHourlyDistributionChart(data, pollutant) {
     const ctx = canvas.getContext('2d');
     const colors = getChartColors();
 
-    const labels = data.map(d => `${d.hour}:00`);
-    const averages = data.map(d => d.average);
+    const labels = hourlyData.map(d => `${d.hour}:00`);
+    const averages = hourlyData.map(d => d.average);
 
-    charts.hourlyDistribution = new Chart(ctx, {
+    if (hourlyDistributionChart) hourlyDistributionChart.destroy();
+    hourlyDistributionChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
@@ -646,29 +442,69 @@ function renderHourlyDistributionChart(data, pollutant) {
                 data: averages,
                 backgroundColor: colors.primary + '80',
                 borderColor: colors.primary,
-                borderWidth: 1
+                borderWidth: 1,
+                borderRadius: 4,
+                borderSkipped: false
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
             scales: {
                 x: {
                     display: true,
-                    title: { display: true, text: 'Hour of Day', color: colors.text },
-                    ticks: { color: colors.text },
-                    grid: { color: colors.grid }
+                    title: { 
+                        display: true, 
+                        text: 'Hour of Day', 
+                        color: colors.text,
+                        font: { size: 12, weight: 'bold' }
+                    },
+                    ticks: { color: colors.text, maxRotation: 45 },
+                    grid: { color: colors.grid, drawBorder: false }
                 },
                 y: {
                     display: true,
-                    title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
-                    ticks: { color: colors.text },
-                    grid: { color: colors.grid },
+                    title: { 
+                        display: true, 
+                        text: `${pollutant} (μg/m³)`, 
+                        color: colors.text,
+                        font: { size: 12, weight: 'bold' }
+                    },
+                    ticks: { 
+                        color: colors.text,
+                        callback: function(value) {
+                            return value.toFixed(1);
+                        }
+                    },
+                    grid: { color: colors.grid, drawBorder: false },
                     beginAtZero: true
                 }
             },
             plugins: {
-                legend: { labels: { color: colors.text } }
+                legend: { 
+                    labels: { 
+                        color: colors.text,
+                        usePointStyle: true,
+                        padding: 20
+                    },
+                    position: 'top'
+                },
+                tooltip: {
+                    backgroundColor: colors.background,
+                    titleColor: colors.text,
+                    bodyColor: colors.text,
+                    borderColor: colors.grid,
+                    borderWidth: 1,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
+                        }
+                    }
+                }
             }
         }
     });
@@ -687,6 +523,7 @@ function renderFuturePredictionsChart(predictions, pollutant) {
 
     const labels = Array.from({ length: predictions.length }, (_, i) => `${i + 1}:00`);
 
+    if (charts.futurePredictions) charts.futurePredictions.destroy();
     charts.futurePredictions = new Chart(ctx, {
         type: 'line',
         data: {
@@ -745,84 +582,6 @@ function renderFuturePredictionsChart(predictions, pollutant) {
     });
 }
 
-function renderPredictionComparisonChart(actual, predicted, pollutant) {
-    const canvas = document.getElementById('timeSeriesChart');
-    if (!canvas || !actual || !predicted || actual.length === 0 || predicted.length === 0) {
-        console.warn('PredictionComparisonChart: Missing canvas or data');
-        showError('Cannot render Prediction Comparison Chart: Missing data or canvas.');
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    const colors = getChartColors();
-
-    const labels = Array.from({ length: actual.length }, (_, i) => i + 1);
-
-    charts.predictionComparison = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Actual',
-                    data: actual,
-                    borderColor: colors.primary,
-                    backgroundColor: colors.primary + '20',
-                    fill: false,
-                    tension: 0.1
-                },
-                {
-                    label: 'Predicted',
-                    data: predicted,
-                    borderColor: colors.danger,
-                    backgroundColor: colors.danger + '20',
-                    fill: false,
-                    tension: 0.1
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    display: true,
-                    title: { display: true, text: 'Time Steps', color: colors.text },
-                    ticks: { color: colors.text },
-                    grid: { color: colors.grid }
-                },
-                y: {
-                    display: true,
-                    title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
-                    ticks: { color: colors.text },
-                    grid: { color: colors.grid }
-                }
-            },
-            plugins: {
-                legend: { labels: { color: colors.text } },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
-                        }
-                    }
-                },
-                zoom: {
-                    zoom: {
-                        wheel: { enabled: true },
-                        pinch: { enabled: true },
-                        mode: 'xy'
-                    },
-                    pan: {
-                        enabled: true,
-                        mode: 'xy'
-                    }
-                }
-            }
-        }
-    });
-}
-
 function renderMultiPollutantChart(data) {
     const canvas = document.getElementById('multiPollutantChart');
     if (!canvas || !data || data.length === 0) {
@@ -849,6 +608,7 @@ function renderMultiPollutantChart(data) {
         pointHoverRadius: 3
     }));
 
+    if (charts.multiPollutant) charts.multiPollutant.destroy();
     charts.multiPollutant = new Chart(ctx, {
         type: 'line',
         data: {
@@ -903,6 +663,7 @@ function renderWeatherChart(data) {
 
     const labels = data.map(d => new Date(d.datetime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
 
+    if (charts.weather) charts.weather.destroy();
     charts.weather = new Chart(ctx, {
         type: 'line',
         data: {
@@ -1007,9 +768,10 @@ function renderCorrelationChart(data) {
     const regressionLine = scatterData.map(d => ({
         x: d.x,
         y: regression.slope * d.x + regression.intercept
-    }));     
+    }));
 
-    charts.correlation = new Chart(ctx, { 
+    if (charts.correlation) charts.correlation.destroy();
+    charts.correlation = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [
@@ -1060,7 +822,7 @@ function renderCorrelationChart(data) {
             }
         }
     });
-}                    
+}
 
 function calculateLinearRegression(data) {
     const n = data.length;
@@ -1076,6 +838,51 @@ function calculateLinearRegression(data) {
 
     return { slope, intercept };
 }
+
+function updateChartsForCity(cityData) {
+    const selectedPollutant = getCurrentPollutant();
+    if (predictionComparisonChart && cityData.filteredData && cityData.futurePredictions[selectedPollutant]) {
+        predictionComparisonChart.data.datasets[0].data = cityData.filteredData.map(d => d[selectedPollutant] || 0);
+        predictionComparisonChart.data.datasets[1].data = cityData.futurePredictions[selectedPollutant];
+        predictionComparisonChart.data.labels = Array.from({ length: cityData.filteredData.length }, (_, i) => i + 1);
+        predictionComparisonChart.update('none');
+    }
+
+    if (hourlyDistributionChart && cityData.hourlyDistributions[selectedPollutant]) {
+        hourlyDistributionChart.data.labels = cityData.hourlyDistributions[selectedPollutant].map(d => `${d.hour}:00`);
+        hourlyDistributionChart.data.datasets[0].data = cityData.hourlyDistributions[selectedPollutant].map(d => d.average);
+        hourlyDistributionChart.update('none');
+    }
+
+    if (radarChart && cityData.radarData) {
+        radarChart.data.labels = cityData.radarData.map(d => d.subject);
+        radarChart.data.datasets[0].data = cityData.radarData.map(d => d.value);
+        radarChart.update('none');
+    }
+}
+
+function destroyCharts() {
+    Object.values(charts).forEach(chart => chart?.destroy?.());
+    if (predictionComparisonChart) {
+        predictionComparisonChart.destroy();
+        predictionComparisonChart = null;
+    }
+    if (hourlyDistributionChart) {
+        hourlyDistributionChart.destroy();
+        hourlyDistributionChart = null;
+    }
+    if (radarChart) {
+        radarChart.destroy();
+        radarChart = null;
+    }
+    charts = {};
+}
+
+window.addEventListener('resize', function() {
+    if (predictionComparisonChart) predictionComparisonChart.resize();
+    if (hourlyDistributionChart) hourlyDistributionChart.resize();
+    if (radarChart) radarChart.resize();
+});
 
 function updateActiveView(view) {
     const views = document.querySelectorAll('.view-btn');
@@ -1111,12 +918,11 @@ function updateDashboard() {
     const selectedCity = citySelect ? citySelect.value : 'Delhi';
     const selectedTimeRange = timeRangeSelect ? timeRangeSelect.value : '24h';
     const selectedPollutant = getCurrentPollutant();
+    const viewType = getCurrentView();
 
-    // Show loading spinner during API call
     showLoadingSpinner();
 
-    // Fetch new data based on selections
-    fetch(`/api/dashboard?city=${selectedCity}&time_range=${selectedTimeRange}&pollutant=${selectedPollutant}`)
+    fetch(`/api/dashboard?city=${selectedCity}&timeRange=${selectedTimeRange}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1127,15 +933,17 @@ function updateDashboard() {
             if (data.error) {
                 showError(data.error.message);
             } else {
+                currentData = data;
                 renderCharts(
                     data.filteredData,
                     data.radarData,
-                    data.hourlyDistribution,
+                    data.hourlyDistributions,
                     data.futurePredictions,
-                    data.actualValues,
-                    data.predictedValues,
-                    data.selectedPollutant
+                    data.pollutants,
+                    selectedPollutant
                 );
+                updateChartsForCity(data);
+                document.getElementById('last-updated').textContent = `Last Updated: ${new Date().toLocaleString()} for ${selectedCity}`;
             }
         })
         .catch(error => {
@@ -1156,6 +964,12 @@ function updateChartThemes() {
             chart.options.scales.x.grid.color = colors.grid;
             chart.options.scales.y.grid.color = colors.grid;
             chart.options.plugins.legend.labels.color = colors.text;
+            if (chart.options.scales.r) {
+                chart.options.scales.r.ticks.color = colors.text;
+                chart.options.scales.r.grid.color = colors.grid;
+                chart.options.scales.r.angleLines.color = colors.grid;
+                chart.options.scales.r.pointLabels.color = colors.text;
+            }
             chart.update();
         }
     });
@@ -1175,7 +989,14 @@ function hideLoadingSpinner() {
         loading.style.opacity = '0';
         setTimeout(() => {
             loading.style.display = 'none';
-        },
-        500);
+        }, 500);
     }
-}   
+}
+
+function showError(message) {
+    const errorPanel = document.getElementById('error-panel');
+    if (errorPanel) {
+        errorPanel.textContent = message;
+        errorPanel.style.display = 'block';
+    }
+}
