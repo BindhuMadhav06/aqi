@@ -1,13 +1,14 @@
 # render.yaml
 prebuild:
-  - pip install -r requirements.txt --prefer-binary
+  - pip install --upgrade pip  # Optional: Upgrade pip to the latest version
+  - pip install -r requirements.txt --prefer-binary  # Use pre-built wheels
 build:
   python_version: "3.9.12"
 services:
   - type: web
     name: air-quality-monitor
     env: python
-    buildCommand: "pip install -r requirements.txt --prefer-binary"
+    buildCommand: "pip install -r requirements.txt --prefer-binary"  # Single corrected command
     startCommand: "gunicorn --bind 0.0.0.0:$PORT aqi_prediction:app"
     autoDeploy: true
     envVars:
