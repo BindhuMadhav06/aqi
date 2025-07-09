@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "aqi_prediction.py",
-      "use": "@vercel/python",
-      "config": {
-        "runtime": "python3.9"
-      }
+      "use": "@vercel/python@3.9"
     }
   ],
   "routes": [
