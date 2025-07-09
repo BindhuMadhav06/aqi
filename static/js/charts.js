@@ -1,41 +1,33 @@
-function renderPredictionComparisonChart(actual, predicted, pollutant) {
-    const canvas = document.getElementById('timeSeriesChart');
-    if (!canvas || !actual || !predicted || actual.length === 0 || predicted.length === 0) {
-        console.warn('PredictionComparisonChart: Missing canvas or data');
-        return;
-    }
+// Chart creation functions for AQI Dashboard
 
-    const ctx = canvas.getContext('2d');
-    const colors = {
-        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
-        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
-        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
-        primary: '#3b82f6',
-        danger: '#ef4444'
-    };
-
-    const labels = Array.from({ length: actual.length }, (_, i) => i + 1);
-
-    new Chart(ctx, {
+function createTimeSeriesChart(ctx, data, pollutant) {
+    const colors = getChartColors();
+    const plotData = data.plotData[pollutant];
+    
+    return new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels: plotData.labels || plotData.actual.map((_, i) => new Date(Date.now() + i * 3600000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false })),
             datasets: [
                 {
-                    label: 'Actual',
-                    data: actual,
+                    label: `${pollutant} Actual (μg/m³)`,
+                    data: plotData.actual,
                     borderColor: colors.primary,
                     backgroundColor: colors.primary + '20',
-                    fill: false,
-                    tension: 0.1
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 2,
+                    pointHoverRadius: 4
                 },
                 {
-                    label: 'Predicted',
-                    data: predicted,
+                    label: `${pollutant} Predicted (μg/m³)`,
+                    data: Array(plotData.actual.length).fill(null).concat(plotData.predicted),
                     borderColor: colors.danger,
                     backgroundColor: colors.danger + '20',
-                    fill: false,
-                    tension: 0.1
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 2,
+                    pointHoverRadius: 4
                 }
             ]
         },
@@ -44,13 +36,11 @@ function renderPredictionComparisonChart(actual, predicted, pollutant) {
             maintainAspectRatio: false,
             scales: {
                 x: {
-                    display: true,
-                    title: { display: true, text: 'Time Steps', color: colors.text },
-                    ticks: { color: colors.text },
+                    title: { display: true, text: 'Time', color: colors.text },
+                    ticks: { color: colors.text, maxTicksLimit: 10 },
                     grid: { color: colors.grid }
                 },
                 y: {
-                    display: true,
                     title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
                     ticks: { color: colors.text },
                     grid: { color: colors.grid }
@@ -61,19 +51,58 @@ function renderPredictionComparisonChart(actual, predicted, pollutant) {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)} μg/m³`;
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(2)}`;
                         }
                     }
                 },
                 zoom: {
-                    zoom: {
-                        wheel: { enabled: true },
-                        pinch: { enabled: true },
-                        mode: 'xy'
-                    },
-                    pan: {
-                        enabled: true,
-                        mode: 'xy'
+                    zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: 'xy' },
+                    pan: { enabled: true, mode: 'xy' }
+                }
+            }
+        }
+    });
+}
+
+function createRadarChart(ctx, radarData) {
+    const colors = getChartColors();
+    
+    return new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: radarData.map(d => d.subject),
+            datasets: [{
+                label: 'Pollutant Levels',
+                data: radarData.map(d => d.value),
+                borderColor: colors.primary,
+                backgroundColor: colors.primary + '40',
+                pointBackgroundColor: colors.primary,
+                pointBorderColor: colors.background,
+                pointHoverBackgroundColor: colors.background,
+                pointHoverBorderColor: colors.primary,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: { color: colors.text, backdropColor: 'transparent' },
+                    grid: { color: colors.grid },
+                    angleLines: { color: colors.grid },
+                    pointLabels: { color: colors.text }
+                }
+            },
+            plugins: {
+                legend: { labels: { color: colors.text } },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.parsed.r.toFixed(2)}%`;
+                        }
                     }
                 }
             }
@@ -81,33 +110,18 @@ function renderPredictionComparisonChart(actual, predicted, pollutant) {
     });
 }
 
-function renderHourlyDistributionChart(hourlyData, pollutant) {
-    const canvas = document.getElementById('hourlyDistributionChart');
-    if (!canvas || !hourlyData || hourlyData.length === 0) {
-        console.warn('HourlyDistributionChart: Missing canvas or data');
-        return;
-    }
-
-    const ctx = canvas.getContext('2d');
-    const colors = {
-        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
-        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
-        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
-        primary: '#3498db'
-    };
-
-    const labels = hourlyData.map(d => `${d.hour}:00`);
-    const averages = hourlyData.map(d => d.average);
-
-    new Chart(ctx, {
+function createHourlyDistributionChart(ctx, hourlyData, pollutant) {
+    const colors = getChartColors();
+    
+    return new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: hourlyData.map(d => `${d.hour}:00`),
             datasets: [{
-                label: `Hourly ${pollutant} Average`,
-                data: averages,
-                backgroundColor: colors.primary + '80',
-                borderColor: colors.primary,
+                label: `${pollutant} Average (μg/m³)`,
+                data: hourlyData.map(d => d.average),
+                backgroundColor: colors.secondary + '80',
+                borderColor: colors.secondary,
                 borderWidth: 1
             }]
         },
@@ -116,17 +130,14 @@ function renderHourlyDistributionChart(hourlyData, pollutant) {
             maintainAspectRatio: false,
             scales: {
                 x: {
-                    display: true,
                     title: { display: true, text: 'Hour of Day', color: colors.text },
                     ticks: { color: colors.text },
                     grid: { color: colors.grid }
                 },
                 y: {
-                    display: true,
                     title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
                     ticks: { color: colors.text },
-                    grid: { color: colors.grid },
-                    beginAtZero: true
+                    grid: { color: colors.grid }
                 }
             },
             plugins: {
@@ -135,35 +146,23 @@ function renderHourlyDistributionChart(hourlyData, pollutant) {
         }
     });
 }
-function renderTrendLineChart(data, pollutant) {
-    const canvas = document.getElementById('trendLineChart');
-    if (!canvas || !data || data.length === 0) {
-        console.warn('TrendLineChart: Missing canvas or data');
-        return;
-    }
 
-    const ctx = canvas.getContext('2d');
-    const colors = {
-        background: currentTheme === 'dark' ? '#1f2937' : '#ffffff',
-        text: currentTheme === 'dark' ? '#f9fafb' : '#1f2937',
-        grid: currentTheme === 'dark' ? '#374151' : '#e5e7eb',
-        line: '#10b981'
-    };
-
-    const labels = data.map(d => d.timestamp);
-    const values = data.map(d => d[pollutant]);
-
-    new Chart(ctx, {
+function createFuturePredictionsChart(ctx, predictions, pollutant) {
+    const colors = getChartColors();
+    
+    return new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels: Array.from({ length: predictions.length }, (_, i) => `+${i+1}h`),
             datasets: [{
-                label: `${pollutant} Trend`,
-                data: values,
-                borderColor: colors.line,
-                backgroundColor: colors.line + '20',
+                label: `Predicted ${pollutant} (μg/m³)`,
+                data: predictions,
+                borderColor: colors.danger,
+                backgroundColor: colors.danger + '20',
                 fill: true,
-                tension: 0.3
+                tension: 0.4,
+                pointRadius: 2,
+                pointHoverRadius: 4
             }]
         },
         options: {
@@ -171,18 +170,11 @@ function renderTrendLineChart(data, pollutant) {
             maintainAspectRatio: false,
             scales: {
                 x: {
-                    type: 'time',
-                    time: {
-                        parser: 'YYYY-MM-DD HH:mm:ss',
-                        tooltipFormat: 'MMM D, h:mm A',
-                        unit: 'hour'
-                    },
-                    title: { display: true, text: 'Time', color: colors.text },
-                    ticks: { color: colors.text },
+                    title: { display: true, text: 'Future Hours', color: colors.text },
+                    ticks: { color: colors.text, maxTicksLimit: 12 },
                     grid: { color: colors.grid }
                 },
                 y: {
-                    beginAtZero: true,
                     title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
                     ticks: { color: colors.text },
                     grid: { color: colors.grid }
@@ -193,4 +185,156 @@ function renderTrendLineChart(data, pollutant) {
             }
         }
     });
+}
+
+function createMultiPollutantChart(ctx, plotData, pollutants) {
+    const colors = getChartColors();
+    
+    const labels = plotData[pollutants[0]]?.labels || plotData[pollutants[0]]?.actual.map((_, i) => new Date(Date.now() + i * 3600000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
+    const datasets = pollutants.map(pollutant => ({
+        label: pollutant,
+        data: plotData[pollutant]?.actual || [],
+        borderColor: colors[pollutant === 'PM2.5' ? 'primary' : pollutant === 'PM10' ? 'secondary' : pollutant === 'SO2' ? 'accent' : pollutant === 'NO2' ? 'danger' : pollutant === 'CO' ? 'info' : 'warning'],
+        backgroundColor: colors[pollutant === 'PM2.5' ? 'primary' : pollutant === 'PM10' ? 'secondary' : pollutant === 'SO2' ? 'accent' : pollutant === 'NO2' ? 'danger' : pollutant === 'CO' ? 'info' : 'warning'] + '20',
+        fill: true
+    }));
+
+    return new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: { display: true, text: 'Time', color: colors.text },
+                    ticks: { color: colors.text, maxTicksLimit: 10 },
+                    grid: { color: colors.grid }
+                },
+                y: {
+                    title: { display: true, text: 'Concentration (μg/m³)', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                }
+            },
+            plugins: {
+                legend: { labels: { color: colors.text } }
+            }
+        }
+    });
+}
+
+function createWeatherChart(ctx, weatherData) {
+    const colors = getChartColors();
+    
+    const labels = weatherData.map(d => new Date(d.datetime || Date.now()).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
+    const datasets = [
+        { label: 'Temperature (°C)', data: weatherData.map(d => d.temperature || 0), borderColor: colors.primary, yAxisID: 'y' },
+        { label: 'Humidity (%)', data: weatherData.map(d => d.humidity || 0), borderColor: colors.secondary, yAxisID: 'y1' },
+        { label: 'Wind Speed (m/s)', data: weatherData.map(d => d.windSpeed || 0), borderColor: colors.accent, yAxisID: 'y2' }
+    ];
+
+    return new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: { display: true, text: 'Time', color: colors.text },
+                    ticks: { color: colors.text, maxTicksLimit: 10 },
+                    grid: { color: colors.grid }
+                },
+                y: {
+                    title: { display: true, text: 'Temperature (°C)', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                },
+                y1: {
+                    position: 'right',
+                    title: { display: true, text: 'Humidity (%)', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { drawOnChartArea: false }
+                },
+                y2: {
+                    position: 'right',
+                    title: { display: true, text: 'Wind Speed (m/s)', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { drawOnChartArea: false }
+                }
+            },
+            plugins: {
+                legend: { labels: { color: colors.text } }
+            }
+        }
+    });
+}
+
+function createCorrelationChart(ctx, correlationData, pollutant) {
+    const colors = getChartColors();
+    
+    const scatterData = correlationData.map(d => ({ x: d.temperature, y: d[pollutant.toLowerCase()] || d.pm25 }));
+    const regression = calculateLinearRegression(scatterData);
+    const regressionLine = scatterData.map(d => ({ x: d.x, y: regression.slope * d.x + regression.intercept }));
+
+    return new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [
+                {
+                    label: 'Data Points',
+                    data: scatterData,
+                    backgroundColor: colors.info + '80',
+                    borderColor: colors.info,
+                    pointRadius: 5
+                },
+                {
+                    label: 'Regression Line',
+                    data: regressionLine,
+                    type: 'line',
+                    borderColor: colors.danger,
+                    borderWidth: 2,
+                    fill: false,
+                    pointRadius: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    title: { display: true, text: 'Temperature (°C)', color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                },
+                y: {
+                    title: { display: true, text: `${pollutant} (μg/m³)`, color: colors.text },
+                    ticks: { color: colors.text },
+                    grid: { color: colors.grid }
+                }
+            },
+            plugins: {
+                legend: { labels: { color: colors.text } }
+            }
+        }
+    });
+}
+
+function calculateLinearRegression(data) {
+    const n = data.length;
+    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+    
+    data.forEach(point => {
+        sumX += point.x;
+        sumY += point.y;
+        sumXY += point.x * point.y;
+        sumXX += point.x * point.x;
+    });
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+    
+    return { slope, intercept };
 }

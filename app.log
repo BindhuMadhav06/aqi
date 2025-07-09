@@ -800,3 +800,723 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\
 2025-07-08 15:51:13,863 - ERROR - LSTM prediction error: 'model_O3'
 2025-07-08 15:51:13,863 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
 2025-07-08 15:51:13,867 - INFO - 127.0.0.1 - - [08/Jul/2025 15:51:13] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-08 22:19:21,446 - INFO - Background cleanup task started
+2025-07-08 22:19:21,448 - INFO - Starting Flask application on port 10000
+2025-07-08 22:19:21,507 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:10000
+ * Running on http://192.168.31.63:10000
+2025-07-08 22:19:21,507 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-08 22:19:24,551 - INFO - City changed to Delhi, clearing cache
+2025-07-08 22:19:24,598 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 22:19:24,631 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:25,838 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:25,840 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:26,171 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:26,176 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:26,203 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:26,212 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:26,330 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:26,342 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:26,457 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:26,457 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:26,598 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:26,598 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:26,603 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:26,635 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:26] "GET / HTTP/1.1" 200 -
+2025-07-08 22:19:27,080 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-08 22:19:27,080 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-08 22:19:27,081 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-07-08 22:19:27,343 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:27,344 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:27,344 - INFO - Client-side: Dashboard initialized for city: undefined, pollutant: PM2.5
+2025-07-08 22:19:27,345 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:27,345 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:27,346 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:27,373 - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 522, in favicon
+    return send_file(os.path.join(app.root_path, 'static', 'favicon.ico'), mimetype='image/x-icon')
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 504, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\werkzeug\utils.py", line 427, in send_file
+    stat = os.stat(path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\madhav\\arshu\\arshu\\static\\favicon.ico'
+2025-07-08 22:19:27,388 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-07-08 22:19:27,388 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:27] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
+2025-07-08 22:19:34,098 - INFO - Client-side: View changed to trends
+2025-07-08 22:19:34,100 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:34,105 - INFO - City changed to Delhi, clearing cache
+2025-07-08 22:19:34,199 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 22:19:34,241 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:34,712 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:34,712 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:34,951 - INFO - Client-side: View changed to pollutants
+2025-07-08 22:19:34,953 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:34,973 - INFO - City changed to Delhi, clearing cache
+2025-07-08 22:19:35,073 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 22:19:35,083 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:35,098 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:35,126 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:35,711 - INFO - Client-side: View changed to weather
+2025-07-08 22:19:35,714 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:35] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:35,730 - INFO - City changed to Delhi, clearing cache
+2025-07-08 22:19:35,854 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:35,869 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:36,138 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 22:19:36,246 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:36,246 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:36,261 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:36,646 - INFO - Client-side: View changed to overview
+2025-07-08 22:19:36,665 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:36] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:36,726 - INFO - City changed to Delhi, clearing cache
+2025-07-08 22:19:37,132 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-08 22:19:37,208 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:37,420 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:37,426 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:38,161 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:38,173 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:38,723 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:38,740 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:39,013 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:39,030 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:39,467 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:39,471 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:40,437 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:40,437 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:40,444 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:40,444 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:40,451 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:40] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=trends HTTP/1.1" 200 -
+2025-07-08 22:19:40,458 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:40,488 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:40,494 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:40,502 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:40,502 - ERROR - Client-side: Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')
+2025-07-08 22:19:40,527 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:40,536 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:40,766 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:40,772 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:41,043 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:41,047 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:41,796 - INFO - Client-side: City changed to Mumbai
+2025-07-08 22:19:41,804 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:41] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:41,877 - INFO - City changed to Mumbai, clearing cache
+2025-07-08 22:19:42,027 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:42,035 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:42,229 - INFO - Data loaded from mumbai_data.csv for Mumbai! Shape: (5000, 15)
+2025-07-08 22:19:42,310 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-08 22:19:42,811 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:42,816 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:43,096 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:43,102 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:43,339 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:43,347 - ERROR - LSTM prediction error: 'model_PM2.5'
+2025-07-08 22:19:43,862 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:43,871 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:44,982 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:44,999 - ERROR - LSTM prediction error: 'model_PM10'
+2025-07-08 22:19:45,499 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:45,514 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:45,829 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:45,839 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:46,251 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:46,252 - ERROR - LSTM prediction error: 'model_SO2'
+2025-07-08 22:19:46,256 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:46,294 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:47,437 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:47,457 - ERROR - LSTM prediction error: 'model_NO2'
+2025-07-08 22:19:47,472 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:47,536 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:47,584 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:47,631 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:47] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=pollutants HTTP/1.1" 200 -
+2025-07-08 22:19:47,679 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:47,701 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:47] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:47,715 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:47,790 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:47] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:47,774 - ERROR - Client-side: Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')
+2025-07-08 22:19:47,838 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:47] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:48,009 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:48,017 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:48,423 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:48,423 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:48,430 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:48,459 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:48] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=weather HTTP/1.1" 200 -
+2025-07-08 22:19:48,487 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:48,513 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:48,514 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:48] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:48,514 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:48] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:48,537 - ERROR - Client-side: Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')
+2025-07-08 22:19:48,552 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:48] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:48,617 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:48,617 - ERROR - LSTM prediction error: 'model_CO'
+2025-07-08 22:19:49,121 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:49,145 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:49,154 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:49,196 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:49] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=overview HTTP/1.1" 200 -
+2025-07-08 22:19:49,535 - ERROR - Failed to prepare LSTM data: Found array with 0 sample(s) (shape=(0, 1)) while a minimum of 1 is required by MinMaxScaler.
+2025-07-08 22:19:49,545 - ERROR - LSTM prediction error: 'model_O3'
+2025-07-08 22:19:49,560 - ERROR - Plot data generation error: object of type 'NoneType' has no len()
+2025-07-08 22:19:49,602 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:49] "GET /api/dashboard?city=Mumbai&pollutant=PM2.5&timeRange=24h&view=overview HTTP/1.1" 200 -
+2025-07-08 22:19:50,699 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:50,699 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:50,699 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:50,706 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:50,730 - ERROR - Client-side: Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')
+2025-07-08 22:19:50,730 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:50,750 - ERROR - Client-side: TimeSeriesChart: Missing canvas or data
+2025-07-08 22:19:50,755 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:50,791 - ERROR - Client-side: Chart rendering failed: createRadarChart is not defined
+2025-07-08 22:19:50,795 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-08 22:19:50,795 - ERROR - Client-side: Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')
+2025-07-08 22:19:50,795 - INFO - 127.0.0.1 - - [08/Jul/2025 22:19:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 10:59:00,475 - INFO - Background cleanup task started
+2025-07-09 10:59:00,514 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 10:59:00,514 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 10:59:21,165 - INFO - City changed to Delhi, clearing cache
+2025-07-09 10:59:21,204 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 10:59:21,237 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 10:59:31,758 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:31] "GET / HTTP/1.1" 200 -
+2025-07-09 10:59:31,807 - ERROR - Not found error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-09 10:59:31,811 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:31] "[33mGET /static/js/chart.js HTTP/1.1[0m" 404 -
+2025-07-09 10:59:32,855 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:32] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 10:59:32,858 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 10:59:32,918 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 10:59:32,920 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:32] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 10:59:32,930 - INFO - Returning available cities: ['Amaravati', 'Anantapur', 'Chittoor', 'Kadapa', 'Rajamahendravaram', 'Tirupati', 'Vijayawada', 'Visakhapatnam', 'Naharlagun', 'Byrnihat', 'Guwahati', 'Nagaon', 'Nalbari', 'Silchar', 'Sivasagar', 'Araria', 'Arrah', 'Aurangabad', 'Begusarai', 'Bettiah', 'Bhagalpur', 'Bihar Sharif', 'Buxar', 'Chhapra', 'Darbhanga', 'Gaya', 'Hajipur', 'Katihar', 'Kishanganj', 'Manguraha', 'Motihari', 'Munger', 'Muzaffarpur', 'Patna', 'Purnia', 'Rajgir', 'Saharsa', 'Samastipur', 'Sasaram', 'Siwan', 'Chandigarh', 'Bhilai', 'Bilaspur', 'Chhal', 'Korba', 'Kunjemura', 'Milupara', 'Raipur', 'Tumidih', 'Delhi', 'Ahmedabad', 'Ankleshwar', 'Gandhinagar', 'Nandesari', 'Surat', 'Vapi', 'Vatva', 'Ambala', 'Bahadurgarh', 'Ballabgarh', 'Bhiwani', 'Charkhi Dadri', 'Dharuhera', 'Faridabad', 'Fatehabad', 'Gurugram', 'Hisar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mandikhera', 'Manesar', 'Narnaul', 'Palwal', 'Panchkula', 'Panipat', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamuna Nagar', 'Baddi', 'Srinagar', 'Dhanbad', 'Jorapokhar', 'Bagalkot', 'Belgaum', 'Bengaluru', 'Bidar', 'Chamarajanagar', 'Chikkaballapur', 'Chikkamagaluru', 'Davanagere', 'Dharwad', 'Gadag', 'Hassan', 'Haveri', 'Hubballi', 'Kalaburagi', 'Kolar', 'Koppal', 'Madikeri', 'Mangalore', 'Mysuru', 'Raichur', 'Ramanagara', 'Shivamogga', 'Tumakuru', 'Udupi', 'Vijayapura', 'Yadgir', 'Eloor', 'Ernakulam', 'Kannur', 'Kochi', 'Kollam', 'Kozhikode', 'Thiruvananthapuram', 'Thrissur', 'Bhopal', 'Damoh', 'Dewas', 'Gwalior', 'Indore', 'Jabalpur', 'Katni', 'Maihar', 'Mandideep', 'Pithampur', 'Ratlam', 'Sagar', 'Satna', 'Singrauli', 'Ujjain', 'Aurangabad', 'Chandrapur', 'Kalyan', 'Mumbai', 'Nagpur', 'Nashik', 'Navi Mumbai', 'Pune', 'Solapur', 'Thane', 'Imphal', 'Shillong', 'Aizawl', 'Kohima', 'Baripada', 'Bileipada', 'Brajrajnagar', 'Keonjhar', 'Nayagarh', 'Rairangpur', 'Rourkela', 'Suakati', 'Talcher', 'Tensa', 'Puducherry', 'Amritsar', 'Bathinda', 'Jalandhar', 'Khanna', 'Ludhiana', 'Mandi Gobindgarh', 'Patiala', 'Rupnagar', 'Ajmer', 'Alwar', 'Banswara', 'Barmer', 'Bharatpur', 'Bhiwadi', 'Bikaner', 'Chittorgarh', 'Churu', 'Dausa', 'Dholpur', 'Hanumangarh', 'Jaipur', 'Jaisalmer', 'Jhalawar', 'Jhunjhunu', 'Jodhpur', 'Karauli', 'Kota', 'Pali', 'Pratapgarh', 'Rajsamand', 'Sawai Madhopur', 'Sikar', 'Sirohi', 'Sri Ganganagar', 'Udaipur', 'Gangtok', 'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dindigul', 'Gummidipoondi', 'Hosur', 'Kanchipuram', 'Ooty', 'Palkalaiperur', 'Ramanathapuram', 'Salem', 'Thoothukudi', 'Tirupur', 'Vellore', 'Hyderabad', 'Agartala', 'Agra', 'Baghpat', 'Bareilly', 'Bulandshahr', 'Firozabad', 'Ghaziabad', 'Gorakhpur', 'Greater Noida', 'Hapur', 'Jhansi', 'Kanpur', 'Khurja', 'Lucknow', 'Meerut', 'Moradabad', 'Muzaffarnagar', 'Noida', 'Prayagraj', 'Varanasi', 'Vrindavan', 'Dehradun', 'Kashipur', 'Rishikesh', 'Asansol', 'Durgapur', 'Haldia', 'Howrah', 'Kolkata', 'Siliguri']
+2025-07-09 10:59:32,936 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:32] "GET /api/cities HTTP/1.1" 200 -
+2025-07-09 10:59:33,046 - INFO - Client log: {"level": "info", "message": "Populated city dropdown with: Amaravati,Anantapur,Chittoor,Kadapa,Rajamahendravaram,Tirupati,Vijayawada,Visakhapatnam,Naharlagun,Byrnihat,Guwahati,Nagaon,Nalbari,Silchar,Sivasagar,Araria,Arrah,Aurangabad,Begusarai,Bettiah,Bhagalpur,Bihar Sharif,Buxar,Chhapra,Darbhanga,Gaya,Hajipur,Katihar,Kishanganj,Manguraha,Motihari,Munger,Muzaffarpur,Patna,Purnia,Rajgir,Saharsa,Samastipur,Sasaram,Siwan,Chandigarh,Bhilai,Bilaspur,Chhal,Korba,Kunjemura,Milupara,Raipur,Tumidih,Delhi,Ahmedabad,Ankleshwar,Gandhinagar,Nandesari,Surat,Vapi,Vatva,Ambala,Bahadurgarh,Ballabgarh,Bhiwani,Charkhi Dadri,Dharuhera,Faridabad,Fatehabad,Gurugram,Hisar,Jind,Kaithal,Karnal,Kurukshetra,Mandikhera,Manesar,Narnaul,Palwal,Panchkula,Panipat,Rohtak,Sirsa,Sonipat,Yamuna Nagar,Baddi,Srinagar,Dhanbad,Jorapokhar,Bagalkot,Belgaum,Bengaluru,Bidar,Chamarajanagar,Chikkaballapur,Chikkamagaluru,Davanagere,Dharwad,Gadag,Hassan,Haveri,Hubballi,Kalaburagi,Kolar,Koppal,Madikeri,Mangalore,Mysuru,Raichur,Ramanagara,Shivamogga,Tumakuru,Udupi,Vijayapura,Yadgir,Eloor,Ernakulam,Kannur,Kochi,Kollam,Kozhikode,Thiruvananthapuram,Thrissur,Bhopal,Damoh,Dewas,Gwalior,Indore,Jabalpur,Katni,Maihar,Mandideep,Pithampur,Ratlam,Sagar,Satna,Singrauli,Ujjain,Aurangabad,Chandrapur,Kalyan,Mumbai,Nagpur,Nashik,Navi Mumbai,Pune,Solapur,Thane,Imphal,Shillong,Aizawl,Kohima,Baripada,Bileipada,Brajrajnagar,Keonjhar,Nayagarh,Rairangpur,Rourkela,Suakati,Talcher,Tensa,Puducherry,Amritsar,Bathinda,Jalandhar,Khanna,Ludhiana,Mandi Gobindgarh,Patiala,Rupnagar,Ajmer,Alwar,Banswara,Barmer,Bharatpur,Bhiwadi,Bikaner,Chittorgarh,Churu,Dausa,Dholpur,Hanumangarh,Jaipur,Jaisalmer,Jhalawar,Jhunjhunu,Jodhpur,Karauli,Kota,Pali,Pratapgarh,Rajsamand,Sawai Madhopur,Sikar,Sirohi,Sri Ganganagar,Udaipur,Gangtok,Ariyalur,Chengalpattu,Chennai,Coimbatore,Cuddalore,Dindigul,Gummidipoondi,Hosur,Kanchipuram,Ooty,Palkalaiperur,Ramanathapuram,Salem,Thoothukudi,Tirupur,Vellore,Hyderabad,Agartala,Agra,Baghpat,Bareilly,Bulandshahr,Firozabad,Ghaziabad,Gorakhpur,Greater Noida,Hapur,Jhansi,Kanpur,Khurja,Lucknow,Meerut,Moradabad,Muzaffarnagar,Noida,Prayagraj,Varanasi,Vrindavan,Dehradun,Kashipur,Rishikesh,Asansol,Durgapur,Haldia,Howrah,Kolkata,Siliguri"}
+2025-07-09 10:59:33,048 - INFO - 127.0.0.1 - - [09/Jul/2025 10:59:33] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:13,251 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:13,325 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:13,360 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:13,376 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:13] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:13,389 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:13,396 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:13] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:13,421 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:13,424 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:13] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:14,679 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:14,737 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:14,770 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:14,795 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:14] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:14,807 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:14,809 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:14] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:14,823 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:14,823 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:14] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:16,539 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:16,604 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:16,635 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:16,647 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:16] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:16,661 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:16,665 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:16] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:16,687 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:16,695 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:16] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:18,360 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:18,422 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:18,454 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:18,480 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:18] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:18,491 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:18,494 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:18] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:18,518 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:18,524 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:18] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:19,691 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:19,780 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:19,814 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:19,828 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:19] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:19,864 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:19,869 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:19] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:19,874 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:19,882 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:19] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:21,118 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:21,179 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:21,213 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:21,229 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:21] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:21,250 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:21,254 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:21,275 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:21,280 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:22,184 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:22,275 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:22,301 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:22,314 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:22] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:22,332 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:22,333 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:22,360 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:22,362 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:25,356 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:25,412 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:25,440 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:25,454 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:25] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:25,465 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:25,470 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:25] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:25,482 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:25,487 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:25] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:26,517 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 11:00:26,575 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 11:00:26,609 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:26,632 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:26] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:26,644 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 11:00:26,648 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:26] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:26,664 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 11:00:26,674 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:26] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:31,525 - INFO - City changed to Anantapur, clearing cache
+2025-07-09 11:00:31,598 - INFO - Data loaded from anantapur_data.csv for Anantapur! Shape: (5000, 15)
+2025-07-09 11:00:31,637 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:31,668 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:31] "GET /api/dashboard?city=Anantapur&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:31,682 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Anantapur"}
+2025-07-09 11:00:31,692 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:31] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:31,714 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 24h"}
+2025-07-09 11:00:31,720 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:31] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:35,034 - INFO - City changed to Chittoor, clearing cache
+2025-07-09 11:00:35,115 - INFO - Data loaded from chittoor_data.csv for Chittoor! Shape: (5000, 15)
+2025-07-09 11:00:35,148 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:35,164 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:35] "GET /api/dashboard?city=Chittoor&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:35,187 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Chittoor"}
+2025-07-09 11:00:35,188 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:35] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:35,195 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Chittoor, timeRange: 24h"}
+2025-07-09 11:00:35,199 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:35] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:39,313 - INFO - City changed to Rajamahendravaram, clearing cache
+2025-07-09 11:00:39,393 - INFO - Data loaded from rajamahendravaram_data.csv for Rajamahendravaram! Shape: (5000, 15)
+2025-07-09 11:00:39,444 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:39,458 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:39] "GET /api/dashboard?city=Rajamahendravaram&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:39,469 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Rajamahendravaram"}
+2025-07-09 11:00:39,472 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:39] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:39,491 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Rajamahendravaram, timeRange: 24h"}
+2025-07-09 11:00:39,497 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:39] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:44,532 - INFO - City changed to Vijayawada, clearing cache
+2025-07-09 11:00:44,598 - INFO - Data loaded from vijayawada_data.csv for Vijayawada! Shape: (5000, 15)
+2025-07-09 11:00:44,626 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:44,639 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:44] "GET /api/dashboard?city=Vijayawada&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:44,656 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Vijayawada"}
+2025-07-09 11:00:44,658 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:44] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:44,675 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Vijayawada, timeRange: 24h"}
+2025-07-09 11:00:44,681 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:44] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:47,330 - INFO - City changed to Nagaon, clearing cache
+2025-07-09 11:00:47,387 - INFO - Data loaded from nagaon_data.csv for Nagaon! Shape: (5000, 15)
+2025-07-09 11:00:47,412 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:00:47,425 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:47] "GET /api/dashboard?city=Nagaon&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 11:00:47,433 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Nagaon"}
+2025-07-09 11:00:47,434 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:47] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:00:47,448 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Nagaon, timeRange: 24h"}
+2025-07-09 11:00:47,451 - INFO - 127.0.0.1 - - [09/Jul/2025 11:00:47] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:06:01,963 - INFO - Background cleanup task started
+2025-07-09 11:06:02,007 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:06:02,007 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:06:06,618 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:06:06,665 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:06:06,687 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:06:15,956 - ERROR - Error in index route: 'current_stats' is undefined
+2025-07-09 11:06:15,959 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 660, in index
+    return render_template('index.html',
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\madhav\arshu\arshu\templates\index.html", line 72, in top-level template code
+    {% if current_stats.icon %}
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'current_stats' is undefined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 671, in index
+    return render_template('index.html',
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\madhav\arshu\arshu\templates\index.html", line 72, in top-level template code
+    {% if current_stats.icon %}
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'current_stats' is undefined
+2025-07-09 11:06:15,972 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-07-09 11:06:15,972 - INFO - 127.0.0.1 - - [09/Jul/2025 11:06:15] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-07-09 11:14:10,911 - INFO - Background cleanup task started
+2025-07-09 11:14:10,948 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:14:10,948 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:14:13,192 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:14:13,224 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:14:13,240 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:14:21,766 - ERROR - Error in index route: 'current_stats' is undefined
+2025-07-09 11:14:21,773 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 660, in index
+    return render_template('index.html',
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\madhav\arshu\arshu\templates\index.html", line 72, in top-level template code
+    {% if current_stats.icon %}
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'current_stats' is undefined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 671, in index
+    return render_template('index.html',
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\madhav\arshu\arshu\templates\index.html", line 72, in top-level template code
+    {% if current_stats.icon %}
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'current_stats' is undefined
+2025-07-09 11:14:21,786 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-07-09 11:14:21,786 - INFO - 127.0.0.1 - - [09/Jul/2025 11:14:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-07-09 11:19:29,847 - INFO - Background cleanup task started
+2025-07-09 11:19:29,960 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:19:29,960 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:19:36,484 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:19:36,529 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:19:36,551 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:19:51,133 - INFO - 127.0.0.1 - - [09/Jul/2025 11:19:51] "GET / HTTP/1.1" 200 -
+2025-07-09 11:19:53,884 - INFO - 127.0.0.1 - - [09/Jul/2025 11:19:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 11:19:53,892 - INFO - 127.0.0.1 - - [09/Jul/2025 11:19:53] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 11:19:53,892 - INFO - 127.0.0.1 - - [09/Jul/2025 11:19:53] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-09 11:26:20,867 - INFO - Background cleanup task started
+2025-07-09 11:26:20,930 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:26:20,930 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:26:42,998 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:26:43,054 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:26:43,085 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:26:57,492 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:57] "GET / HTTP/1.1" 200 -
+2025-07-09 11:26:59,498 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 11:26:59,554 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:59] "[36mGET /static/js/charts.js HTTP/1.1[0m" 304 -
+2025-07-09 11:26:59,574 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:59] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 11:26:59,648 - INFO - Client log: {"level": "error", "message": "Chart rendering failed: Cannot read properties of undefined (reading 'PM2.5')"}
+2025-07-09 11:26:59,648 - INFO - Client log: {"level": "info", "message": "Dashboard initialized for city: Delhi, pollutant: PM2.5"}
+2025-07-09 11:26:59,648 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:59] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:26:59,648 - INFO - 127.0.0.1 - - [09/Jul/2025 11:26:59] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:27:57,236 - INFO - Background cleanup task started
+2025-07-09 11:27:57,269 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:27:57,269 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:27:59,463 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:27:59,514 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:27:59,541 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:28:13,708 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:13] "GET / HTTP/1.1" 200 -
+2025-07-09 11:28:13,937 - INFO - Client log: {"level": "error", "message": "Chart rendering failed: Cannot read properties of undefined (reading 'PM2.5')"}
+2025-07-09 11:28:13,939 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:13] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:13,941 - INFO - Client log: {"level": "info", "message": "Dashboard initialized for city: Delhi, pollutant: PM2.5"}
+2025-07-09 11:28:13,941 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:13] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:21,671 - INFO - Client log: {"level": "info", "message": "View changed to trends"}
+2025-07-09 11:28:21,674 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:21,708 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:28:21,823 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:28:21,871 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:28:21,902 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:21] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=trends HTTP/1.1" 200 -
+2025-07-09 11:28:21,917 - INFO - Client log: {"level": "error", "message": "HourlyDistributionChart: Missing canvas or data"}
+2025-07-09 11:28:21,921 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:21,941 - INFO - Client log: {"level": "error", "message": "FuturePredictionsChart: Missing canvas or data"}
+2025-07-09 11:28:21,952 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:21,968 - INFO - Client log: {"level": "error", "message": "Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')"}
+2025-07-09 11:28:22,008 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:22,581 - INFO - Client log: {"level": "info", "message": "View changed to overview"}
+2025-07-09 11:28:22,582 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:22,589 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:28:22,671 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:28:22,705 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:28:22,730 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:22] "GET /api/dashboard?city=Delhi&pollutant=PM2.5&timeRange=24h&view=overview HTTP/1.1" 200 -
+2025-07-09 11:28:22,743 - INFO - Client log: {"level": "error", "message": "Chart rendering failed: Cannot read properties of undefined (reading 'PM2.5')"}
+2025-07-09 11:28:22,748 - INFO - Client log: {"level": "error", "message": "Failed to fetch dashboard data: Cannot set properties of null (setting 'textContent')"}
+2025-07-09 11:28:22,749 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:28:22,749 - INFO - 127.0.0.1 - - [09/Jul/2025 11:28:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:29:09,460 - INFO - Background cleanup task started
+2025-07-09 11:29:09,510 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:29:09,512 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:29:11,936 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:29:11,982 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:29:12,012 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:29:27,554 - INFO - 127.0.0.1 - - [09/Jul/2025 11:29:27] "GET / HTTP/1.1" 200 -
+2025-07-09 11:29:27,875 - INFO - Client log: {"level": "error", "message": "Chart rendering failed: Cannot read properties of undefined (reading 'PM2.5')"}
+2025-07-09 11:29:27,879 - INFO - Client log: {"level": "info", "message": "Dashboard initialized for city: Delhi, pollutant: PM2.5"}
+2025-07-09 11:29:27,881 - INFO - 127.0.0.1 - - [09/Jul/2025 11:29:27] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:29:27,887 - INFO - 127.0.0.1 - - [09/Jul/2025 11:29:27] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:30:46,987 - INFO - Background cleanup task started
+2025-07-09 11:30:47,060 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 11:30:47,061 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 11:31:08,510 - INFO - City changed to Delhi, clearing cache
+2025-07-09 11:31:08,548 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 11:31:08,573 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 11:31:24,758 - INFO - 127.0.0.1 - - [09/Jul/2025 11:31:24] "GET / HTTP/1.1" 200 -
+2025-07-09 11:31:25,022 - INFO - Client log: {"level": "error", "message": "Chart rendering failed: Cannot read properties of undefined (reading 'PM2.5')"}
+2025-07-09 11:31:25,024 - INFO - Client log: {"level": "info", "message": "Dashboard initialized for city: Delhi, pollutant: PM2.5"}
+2025-07-09 11:31:25,025 - INFO - 127.0.0.1 - - [09/Jul/2025 11:31:25] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 11:31:25,025 - INFO - 127.0.0.1 - - [09/Jul/2025 11:31:25] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:02:40,152 - INFO - Cache cleanup completed. Removed 0 entries
+2025-07-09 12:09:36,858 - INFO - Background cleanup task started
+2025-07-09 12:09:36,924 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 12:09:36,926 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 12:09:43,649 - INFO - City changed to Delhi, clearing cache
+2025-07-09 12:09:43,703 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 12:09:43,722 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:09:58,996 - INFO - 127.0.0.1 - - [09/Jul/2025 12:09:58] "GET / HTTP/1.1" 200 -
+2025-07-09 12:09:59,996 - INFO - 127.0.0.1 - - [09/Jul/2025 12:09:59] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 12:09:59,998 - INFO - 127.0.0.1 - - [09/Jul/2025 12:09:59] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-09 12:10:00,001 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 12:10:00,282 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview, city: Delhi, pollutant: PM2.5", "timestamp": "2025-07-09T06:40:00.278Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+2025-07-09 12:10:00,284 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:10:00,286 - INFO - Returning available cities: ['Amaravati', 'Anantapur', 'Chittoor', 'Kadapa', 'Rajamahendravaram', 'Tirupati', 'Vijayawada', 'Visakhapatnam', 'Naharlagun', 'Byrnihat', 'Guwahati', 'Nagaon', 'Nalbari', 'Silchar', 'Sivasagar', 'Araria', 'Arrah', 'Aurangabad', 'Begusarai', 'Bettiah', 'Bhagalpur', 'Bihar Sharif', 'Buxar', 'Chhapra', 'Darbhanga', 'Gaya', 'Hajipur', 'Katihar', 'Kishanganj', 'Manguraha', 'Motihari', 'Munger', 'Muzaffarpur', 'Patna', 'Purnia', 'Rajgir', 'Saharsa', 'Samastipur', 'Sasaram', 'Siwan', 'Chandigarh', 'Bhilai', 'Bilaspur', 'Chhal', 'Korba', 'Kunjemura', 'Milupara', 'Raipur', 'Tumidih', 'Delhi', 'Ahmedabad', 'Ankleshwar', 'Gandhinagar', 'Nandesari', 'Surat', 'Vapi', 'Vatva', 'Ambala', 'Bahadurgarh', 'Ballabgarh', 'Bhiwani', 'Charkhi Dadri', 'Dharuhera', 'Faridabad', 'Fatehabad', 'Gurugram', 'Hisar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mandikhera', 'Manesar', 'Narnaul', 'Palwal', 'Panchkula', 'Panipat', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamuna Nagar', 'Baddi', 'Srinagar', 'Dhanbad', 'Jorapokhar', 'Bagalkot', 'Belgaum', 'Bengaluru', 'Bidar', 'Chamarajanagar', 'Chikkaballapur', 'Chikkamagaluru', 'Davanagere', 'Dharwad', 'Gadag', 'Hassan', 'Haveri', 'Hubballi', 'Kalaburagi', 'Kolar', 'Koppal', 'Madikeri', 'Mangalore', 'Mysuru', 'Raichur', 'Ramanagara', 'Shivamogga', 'Tumakuru', 'Udupi', 'Vijayapura', 'Yadgir', 'Eloor', 'Ernakulam', 'Kannur', 'Kochi', 'Kollam', 'Kozhikode', 'Thiruvananthapuram', 'Thrissur', 'Bhopal', 'Damoh', 'Dewas', 'Gwalior', 'Indore', 'Jabalpur', 'Katni', 'Maihar', 'Mandideep', 'Pithampur', 'Ratlam', 'Sagar', 'Satna', 'Singrauli', 'Ujjain', 'Aurangabad', 'Chandrapur', 'Kalyan', 'Mumbai', 'Nagpur', 'Nashik', 'Navi Mumbai', 'Pune', 'Solapur', 'Thane', 'Imphal', 'Shillong', 'Aizawl', 'Kohima', 'Baripada', 'Bileipada', 'Brajrajnagar', 'Keonjhar', 'Nayagarh', 'Rairangpur', 'Rourkela', 'Suakati', 'Talcher', 'Tensa', 'Puducherry', 'Amritsar', 'Bathinda', 'Jalandhar', 'Khanna', 'Ludhiana', 'Mandi Gobindgarh', 'Patiala', 'Rupnagar', 'Ajmer', 'Alwar', 'Banswara', 'Barmer', 'Bharatpur', 'Bhiwadi', 'Bikaner', 'Chittorgarh', 'Churu', 'Dausa', 'Dholpur', 'Hanumangarh', 'Jaipur', 'Jaisalmer', 'Jhalawar', 'Jhunjhunu', 'Jodhpur', 'Karauli', 'Kota', 'Pali', 'Pratapgarh', 'Rajsamand', 'Sawai Madhopur', 'Sikar', 'Sirohi', 'Sri Ganganagar', 'Udaipur', 'Gangtok', 'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dindigul', 'Gummidipoondi', 'Hosur', 'Kanchipuram', 'Ooty', 'Palkalaiperur', 'Ramanathapuram', 'Salem', 'Thoothukudi', 'Tirupur', 'Vellore', 'Hyderabad', 'Agartala', 'Agra', 'Baghpat', 'Bareilly', 'Bulandshahr', 'Firozabad', 'Ghaziabad', 'Gorakhpur', 'Greater Noida', 'Hapur', 'Jhansi', 'Kanpur', 'Khurja', 'Lucknow', 'Meerut', 'Moradabad', 'Muzaffarnagar', 'Noida', 'Prayagraj', 'Varanasi', 'Vrindavan', 'Dehradun', 'Kashipur', 'Rishikesh', 'Asansol', 'Durgapur', 'Haldia', 'Howrah', 'Kolkata', 'Siliguri']
+2025-07-09 12:10:00,289 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "GET /api/cities HTTP/1.1" 200 -
+2025-07-09 12:10:00,373 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data", "timestamp": "2025-07-09T06:40:00.366Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "url": "http://127.0.0.1:5000/"}
+2025-07-09 12:10:00,375 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:10:00,375 - INFO - Client log: {"level": "info", "message": "Initial data loaded successfully", "timestamp": "2025-07-09T06:40:00.367Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+2025-07-09 12:10:00,377 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:10:00,392 - INFO - Client log: {"level": "info", "message": "Page load time: -1752043183408ms", "timestamp": "2025-07-09T06:40:00.374Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+2025-07-09 12:10:00,393 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:10:00,393 - INFO - Client log: {"level": "info", "message": "Populated city dropdown with: Amaravati, Anantapur, Chittoor, Kadapa, Rajamahendravaram, Tirupati, Vijayawada, Visakhapatnam, Naharlagun, Byrnihat, Guwahati, Nagaon, Nalbari, Silchar, Sivasagar, Araria, Arrah, Aurangabad, Begusarai, Bettiah, Bhagalpur, Bihar Sharif, Buxar, Chhapra, Darbhanga, Gaya, Hajipur, Katihar, Kishanganj, Manguraha, Motihari, Munger, Muzaffarpur, Patna, Purnia, Rajgir, Saharsa, Samastipur, Sasaram, Siwan, Chandigarh, Bhilai, Bilaspur, Chhal, Korba, Kunjemura, Milupara, Raipur, Tumidih, Delhi, Ahmedabad, Ankleshwar, Gandhinagar, Nandesari, Surat, Vapi, Vatva, Ambala, Bahadurgarh, Ballabgarh, Bhiwani, Charkhi Dadri, Dharuhera, Faridabad, Fatehabad, Gurugram, Hisar, Jind, Kaithal, Karnal, Kurukshetra, Mandikhera, Manesar, Narnaul, Palwal, Panchkula, Panipat, Rohtak, Sirsa, Sonipat, Yamuna Nagar, Baddi, Srinagar, Dhanbad, Jorapokhar, Bagalkot, Belgaum, Bengaluru, Bidar, Chamarajanagar, Chikkaballapur, Chikkamagaluru, Davanagere, Dharwad, Gadag, Hassan, Haveri, Hubballi, Kalaburagi, Kolar, Koppal, Madikeri, Mangalore, Mysuru, Raichur, Ramanagara, Shivamogga, Tumakuru, Udupi, Vijayapura, Yadgir, Eloor, Ernakulam, Kannur, Kochi, Kollam, Kozhikode, Thiruvananthapuram, Thrissur, Bhopal, Damoh, Dewas, Gwalior, Indore, Jabalpur, Katni, Maihar, Mandideep, Pithampur, Ratlam, Sagar, Satna, Singrauli, Ujjain, Aurangabad, Chandrapur, Kalyan, Mumbai, Nagpur, Nashik, Navi Mumbai, Pune, Solapur, Thane, Imphal, Shillong, Aizawl, Kohima, Baripada, Bileipada, Brajrajnagar, Keonjhar, Nayagarh, Rairangpur, Rourkela, Suakati, Talcher, Tensa, Puducherry, Amritsar, Bathinda, Jalandhar, Khanna, Ludhiana, Mandi Gobindgarh, Patiala, Rupnagar, Ajmer, Alwar, Banswara, Barmer, Bharatpur, Bhiwadi, Bikaner, Chittorgarh, Churu, Dausa, Dholpur, Hanumangarh, Jaipur, Jaisalmer, Jhalawar, Jhunjhunu, Jodhpur, Karauli, Kota, Pali, Pratapgarh, Rajsamand, Sawai Madhopur, Sikar, Sirohi, Sri Ganganagar, Udaipur, Gangtok, Ariyalur, Chengalpattu, Chennai, Coimbatore, Cuddalore, Dindigul, Gummidipoondi, Hosur, Kanchipuram, Ooty, Palkalaiperur, Ramanathapuram, Salem, Thoothukudi, Tirupur, Vellore, Hyderabad, Agartala, Agra, Baghpat, Bareilly, Bulandshahr, Firozabad, Ghaziabad, Gorakhpur, Greater Noida, Hapur, Jhansi, Kanpur, Khurja, Lucknow, Meerut, Moradabad, Muzaffarnagar, Noida, Prayagraj, Varanasi, Vrindavan, Dehradun, Kashipur, Rishikesh, Asansol, Durgapur, Haldia, Howrah, Kolkata, Siliguri", "timestamp": "2025-07-09T06:40:00.384Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"}
+2025-07-09 12:10:00,396 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:10:00,407 - ERROR - Not found error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-09 12:10:00,409 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "[33mGET /sw.js HTTP/1.1[0m" 404 -
+2025-07-09 12:10:00,419 - INFO - Client log: {"level": "error", "message": "ServiceWorker registration failed: Failed to register a ServiceWorker for scope ('http://127.0.0.1:5000/') with script ('http://127.0.0.1:5000/sw.js'): A bad HTTP response code (404) was received when fetching the script.", "timestamp": "2025-07-09T06:40:00.415Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "url": "http://127.0.0.1:5000/"}
+2025-07-09 12:10:00,419 - INFO - 127.0.0.1 - - [09/Jul/2025 12:10:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:29:25,602 - INFO - Background cleanup task started
+2025-07-09 12:29:25,662 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 12:29:25,667 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 12:29:28,304 - INFO - City changed to Delhi, clearing cache
+2025-07-09 12:29:28,345 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 12:29:28,367 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:29:42,784 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:42] "GET / HTTP/1.1" 200 -
+2025-07-09 12:29:45,394 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 12:29:45,394 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 12:29:45,402 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "GET /static/js/charts.js HTTP/1.1" 200 -
+2025-07-09 12:29:45,606 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 12:29:45,606 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:29:45,632 - INFO - Returning available cities: ['Amaravati', 'Anantapur', 'Chittoor', 'Kadapa', 'Rajamahendravaram', 'Tirupati', 'Vijayawada', 'Visakhapatnam', 'Naharlagun', 'Byrnihat', 'Guwahati', 'Nagaon', 'Nalbari', 'Silchar', 'Sivasagar', 'Araria', 'Arrah', 'Aurangabad', 'Begusarai', 'Bettiah', 'Bhagalpur', 'Bihar Sharif', 'Buxar', 'Chhapra', 'Darbhanga', 'Gaya', 'Hajipur', 'Katihar', 'Kishanganj', 'Manguraha', 'Motihari', 'Munger', 'Muzaffarpur', 'Patna', 'Purnia', 'Rajgir', 'Saharsa', 'Samastipur', 'Sasaram', 'Siwan', 'Chandigarh', 'Bhilai', 'Bilaspur', 'Chhal', 'Korba', 'Kunjemura', 'Milupara', 'Raipur', 'Tumidih', 'Delhi', 'Ahmedabad', 'Ankleshwar', 'Gandhinagar', 'Nandesari', 'Surat', 'Vapi', 'Vatva', 'Ambala', 'Bahadurgarh', 'Ballabgarh', 'Bhiwani', 'Charkhi Dadri', 'Dharuhera', 'Faridabad', 'Fatehabad', 'Gurugram', 'Hisar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mandikhera', 'Manesar', 'Narnaul', 'Palwal', 'Panchkula', 'Panipat', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamuna Nagar', 'Baddi', 'Srinagar', 'Dhanbad', 'Jorapokhar', 'Bagalkot', 'Belgaum', 'Bengaluru', 'Bidar', 'Chamarajanagar', 'Chikkaballapur', 'Chikkamagaluru', 'Davanagere', 'Dharwad', 'Gadag', 'Hassan', 'Haveri', 'Hubballi', 'Kalaburagi', 'Kolar', 'Koppal', 'Madikeri', 'Mangalore', 'Mysuru', 'Raichur', 'Ramanagara', 'Shivamogga', 'Tumakuru', 'Udupi', 'Vijayapura', 'Yadgir', 'Eloor', 'Ernakulam', 'Kannur', 'Kochi', 'Kollam', 'Kozhikode', 'Thiruvananthapuram', 'Thrissur', 'Bhopal', 'Damoh', 'Dewas', 'Gwalior', 'Indore', 'Jabalpur', 'Katni', 'Maihar', 'Mandideep', 'Pithampur', 'Ratlam', 'Sagar', 'Satna', 'Singrauli', 'Ujjain', 'Aurangabad', 'Chandrapur', 'Kalyan', 'Mumbai', 'Nagpur', 'Nashik', 'Navi Mumbai', 'Pune', 'Solapur', 'Thane', 'Imphal', 'Shillong', 'Aizawl', 'Kohima', 'Baripada', 'Bileipada', 'Brajrajnagar', 'Keonjhar', 'Nayagarh', 'Rairangpur', 'Rourkela', 'Suakati', 'Talcher', 'Tensa', 'Puducherry', 'Amritsar', 'Bathinda', 'Jalandhar', 'Khanna', 'Ludhiana', 'Mandi Gobindgarh', 'Patiala', 'Rupnagar', 'Ajmer', 'Alwar', 'Banswara', 'Barmer', 'Bharatpur', 'Bhiwadi', 'Bikaner', 'Chittorgarh', 'Churu', 'Dausa', 'Dholpur', 'Hanumangarh', 'Jaipur', 'Jaisalmer', 'Jhalawar', 'Jhunjhunu', 'Jodhpur', 'Karauli', 'Kota', 'Pali', 'Pratapgarh', 'Rajsamand', 'Sawai Madhopur', 'Sikar', 'Sirohi', 'Sri Ganganagar', 'Udaipur', 'Gangtok', 'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dindigul', 'Gummidipoondi', 'Hosur', 'Kanchipuram', 'Ooty', 'Palkalaiperur', 'Ramanathapuram', 'Salem', 'Thoothukudi', 'Tirupur', 'Vellore', 'Hyderabad', 'Agartala', 'Agra', 'Baghpat', 'Bareilly', 'Bulandshahr', 'Firozabad', 'Ghaziabad', 'Gorakhpur', 'Greater Noida', 'Hapur', 'Jhansi', 'Kanpur', 'Khurja', 'Lucknow', 'Meerut', 'Moradabad', 'Muzaffarnagar', 'Noida', 'Prayagraj', 'Varanasi', 'Vrindavan', 'Dehradun', 'Kashipur', 'Rishikesh', 'Asansol', 'Durgapur', 'Haldia', 'Howrah', 'Kolkata', 'Siliguri']
+2025-07-09 12:29:45,640 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "GET /api/cities HTTP/1.1" 200 -
+2025-07-09 12:29:45,697 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:29:45,700 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:29:45,742 - INFO - Client log: {"level": "info", "message": "Populated city dropdown with: Amaravati,Anantapur,Chittoor,Kadapa,Rajamahendravaram,Tirupati,Vijayawada,Visakhapatnam,Naharlagun,Byrnihat,Guwahati,Nagaon,Nalbari,Silchar,Sivasagar,Araria,Arrah,Aurangabad,Begusarai,Bettiah,Bhagalpur,Bihar Sharif,Buxar,Chhapra,Darbhanga,Gaya,Hajipur,Katihar,Kishanganj,Manguraha,Motihari,Munger,Muzaffarpur,Patna,Purnia,Rajgir,Saharsa,Samastipur,Sasaram,Siwan,Chandigarh,Bhilai,Bilaspur,Chhal,Korba,Kunjemura,Milupara,Raipur,Tumidih,Delhi,Ahmedabad,Ankleshwar,Gandhinagar,Nandesari,Surat,Vapi,Vatva,Ambala,Bahadurgarh,Ballabgarh,Bhiwani,Charkhi Dadri,Dharuhera,Faridabad,Fatehabad,Gurugram,Hisar,Jind,Kaithal,Karnal,Kurukshetra,Mandikhera,Manesar,Narnaul,Palwal,Panchkula,Panipat,Rohtak,Sirsa,Sonipat,Yamuna Nagar,Baddi,Srinagar,Dhanbad,Jorapokhar,Bagalkot,Belgaum,Bengaluru,Bidar,Chamarajanagar,Chikkaballapur,Chikkamagaluru,Davanagere,Dharwad,Gadag,Hassan,Haveri,Hubballi,Kalaburagi,Kolar,Koppal,Madikeri,Mangalore,Mysuru,Raichur,Ramanagara,Shivamogga,Tumakuru,Udupi,Vijayapura,Yadgir,Eloor,Ernakulam,Kannur,Kochi,Kollam,Kozhikode,Thiruvananthapuram,Thrissur,Bhopal,Damoh,Dewas,Gwalior,Indore,Jabalpur,Katni,Maihar,Mandideep,Pithampur,Ratlam,Sagar,Satna,Singrauli,Ujjain,Aurangabad,Chandrapur,Kalyan,Mumbai,Nagpur,Nashik,Navi Mumbai,Pune,Solapur,Thane,Imphal,Shillong,Aizawl,Kohima,Baripada,Bileipada,Brajrajnagar,Keonjhar,Nayagarh,Rairangpur,Rourkela,Suakati,Talcher,Tensa,Puducherry,Amritsar,Bathinda,Jalandhar,Khanna,Ludhiana,Mandi Gobindgarh,Patiala,Rupnagar,Ajmer,Alwar,Banswara,Barmer,Bharatpur,Bhiwadi,Bikaner,Chittorgarh,Churu,Dausa,Dholpur,Hanumangarh,Jaipur,Jaisalmer,Jhalawar,Jhunjhunu,Jodhpur,Karauli,Kota,Pali,Pratapgarh,Rajsamand,Sawai Madhopur,Sikar,Sirohi,Sri Ganganagar,Udaipur,Gangtok,Ariyalur,Chengalpattu,Chennai,Coimbatore,Cuddalore,Dindigul,Gummidipoondi,Hosur,Kanchipuram,Ooty,Palkalaiperur,Ramanathapuram,Salem,Thoothukudi,Tirupur,Vellore,Hyderabad,Agartala,Agra,Baghpat,Bareilly,Bulandshahr,Firozabad,Ghaziabad,Gorakhpur,Greater Noida,Hapur,Jhansi,Kanpur,Khurja,Lucknow,Meerut,Moradabad,Muzaffarnagar,Noida,Prayagraj,Varanasi,Vrindavan,Dehradun,Kashipur,Rishikesh,Asansol,Durgapur,Haldia,Howrah,Kolkata,Siliguri"}
+2025-07-09 12:29:45,748 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:45] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:29:50,536 - ERROR - Not found error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-09 12:29:50,536 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:50] "[33mPOST /api/data HTTP/1.1[0m" 404 -
+2025-07-09 12:29:50,612 - INFO - Client log: {"level": "error", "message": "Dashboard update error: Not Found", "timestamp": "2025-07-09T06:59:50.606Z", "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "url": "http://127.0.0.1:5000/"}
+2025-07-09 12:29:50,612 - INFO - 127.0.0.1 - - [09/Jul/2025 12:29:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:06,348 - INFO - City changed to Aurangabad, clearing cache
+2025-07-09 12:30:06,466 - INFO - Data loaded from aurangabad_data.csv for Aurangabad! Shape: (5000, 15)
+2025-07-09 12:30:06,516 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:06,558 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:06] "GET /api/dashboard?city=Aurangabad&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:06,579 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Aurangabad"}
+2025-07-09 12:30:06,579 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:06,625 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:06,625 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:06,646 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Aurangabad, timeRange: 24h"}
+2025-07-09 12:30:06,687 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:19,136 - INFO - City changed to Aurangabad, clearing cache
+2025-07-09 12:30:19,240 - INFO - Data loaded from aurangabad_data.csv for Aurangabad! Shape: (5000, 15)
+2025-07-09 12:30:19,291 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:19,321 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:19] "GET /api/dashboard?city=Aurangabad&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:19,332 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Aurangabad"}
+2025-07-09 12:30:19,332 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:19] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:19,374 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:19,374 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Aurangabad, timeRange: 24h"}
+2025-07-09 12:30:19,382 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:19] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:19,382 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:19] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:22,005 - INFO - City changed to Aurangabad, clearing cache
+2025-07-09 12:30:22,126 - INFO - Data loaded from aurangabad_data.csv for Aurangabad! Shape: (5000, 15)
+2025-07-09 12:30:22,178 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:22,218 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:22] "GET /api/dashboard?city=Aurangabad&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:22,238 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Aurangabad"}
+2025-07-09 12:30:22,261 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:22,291 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:22,308 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Aurangabad, timeRange: 24h"}
+2025-07-09 12:30:22,308 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:22,316 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:22] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:24,723 - INFO - City changed to Aurangabad, clearing cache
+2025-07-09 12:30:24,824 - INFO - Data loaded from aurangabad_data.csv for Aurangabad! Shape: (5000, 15)
+2025-07-09 12:30:24,866 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:24,915 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:24] "GET /api/dashboard?city=Aurangabad&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:24,931 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Aurangabad"}
+2025-07-09 12:30:24,931 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:24,959 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:24,966 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:24,966 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Aurangabad, timeRange: 24h"}
+2025-07-09 12:30:24,976 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:26,475 - INFO - City changed to Aurangabad, clearing cache
+2025-07-09 12:30:26,600 - INFO - Data loaded from aurangabad_data.csv for Aurangabad! Shape: (5000, 15)
+2025-07-09 12:30:26,657 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:26,707 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:26] "GET /api/dashboard?city=Aurangabad&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:26,734 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Aurangabad"}
+2025-07-09 12:30:26,740 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:26] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:26,755 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:26,790 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Aurangabad, timeRange: 24h"}
+2025-07-09 12:30:26,790 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:26] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:26,810 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:26] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:28,761 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 12:30:28,977 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 12:30:29,093 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:30:29,168 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:29] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 12:30:29,225 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 12:30:29,229 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:30:29,263 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:29] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:29,258 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 12:30:29,233 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:29] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:30:29,295 - INFO - 127.0.0.1 - - [09/Jul/2025 12:30:29] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:50,704 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 12:31:50,795 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 12:31:50,845 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:31:50,866 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:50] "GET /api/dashboard?city=Amaravati&timeRange=6h HTTP/1.1" 200 -
+2025-07-09 12:31:50,896 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 12:31:50,898 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:50,923 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:31:50,939 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 6h"}
+2025-07-09 12:31:50,940 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:50,940 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:50] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:54,955 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 12:31:55,044 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 12:31:55,092 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:31:55,121 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:55] "GET /api/dashboard?city=Amaravati&timeRange=12h HTTP/1.1" 200 -
+2025-07-09 12:31:55,135 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 12:31:55,141 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:55] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:55,161 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:31:55,170 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 12h"}
+2025-07-09 12:31:55,172 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:55] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:55,174 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:55] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:57,753 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 12:31:57,871 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 12:31:57,926 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:31:57,968 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:57] "GET /api/dashboard?city=Amaravati&timeRange=3d HTTP/1.1" 200 -
+2025-07-09 12:31:58,015 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 12:31:58,019 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:58] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:58,068 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:31:58,073 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:58] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:31:58,076 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 3d"}
+2025-07-09 12:31:58,084 - INFO - 127.0.0.1 - - [09/Jul/2025 12:31:58] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:00,382 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 12:32:00,582 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 12:32:00,698 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:00,797 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:00] "GET /api/dashboard?city=Amaravati&timeRange=7d HTTP/1.1" 200 -
+2025-07-09 12:32:00,846 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 12:32:00,855 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:00,929 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:00,945 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:00] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:00,970 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 7d"}
+2025-07-09 12:32:01,006 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:01] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:02,980 - INFO - City changed to Anantapur, clearing cache
+2025-07-09 12:32:03,130 - INFO - Data loaded from anantapur_data.csv for Anantapur! Shape: (5000, 15)
+2025-07-09 12:32:03,206 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:03,257 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:03] "GET /api/dashboard?city=Anantapur&timeRange=7d HTTP/1.1" 200 -
+2025-07-09 12:32:03,279 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Anantapur"}
+2025-07-09 12:32:03,283 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:03] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:03,318 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:03,323 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 7d"}
+2025-07-09 12:32:03,323 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:03] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:03,348 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:03] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:06,130 - INFO - City changed to Vijayawada, clearing cache
+2025-07-09 12:32:06,225 - INFO - Data loaded from vijayawada_data.csv for Vijayawada! Shape: (5000, 15)
+2025-07-09 12:32:06,274 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:06,315 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:06] "GET /api/dashboard?city=Vijayawada&timeRange=7d HTTP/1.1" 200 -
+2025-07-09 12:32:06,333 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Vijayawada"}
+2025-07-09 12:32:06,335 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:06,398 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:06,414 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:06,418 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Vijayawada, timeRange: 7d"}
+2025-07-09 12:32:06,439 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:06] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:09,816 - INFO - City changed to Anantapur, clearing cache
+2025-07-09 12:32:09,918 - INFO - Data loaded from anantapur_data.csv for Anantapur! Shape: (5000, 15)
+2025-07-09 12:32:09,967 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:10,010 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:10] "GET /api/dashboard?city=Anantapur&timeRange=7d HTTP/1.1" 200 -
+2025-07-09 12:32:10,025 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Anantapur"}
+2025-07-09 12:32:10,025 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:10] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:10,070 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:10,071 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:10] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:10,075 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 7d"}
+2025-07-09 12:32:10,081 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:10] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:16,899 - INFO - City changed to Anantapur, clearing cache
+2025-07-09 12:32:17,013 - INFO - Data loaded from anantapur_data.csv for Anantapur! Shape: (5000, 15)
+2025-07-09 12:32:17,073 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:17,112 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:17] "GET /api/dashboard?city=Anantapur&timeRange=6h HTTP/1.1" 200 -
+2025-07-09 12:32:17,140 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Anantapur"}
+2025-07-09 12:32:17,140 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:17] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:17,178 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:17,185 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 6h"}
+2025-07-09 12:32:17,186 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:17] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:17,186 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:17] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:21,503 - INFO - City changed to Anantapur, clearing cache
+2025-07-09 12:32:21,635 - INFO - Data loaded from anantapur_data.csv for Anantapur! Shape: (5000, 15)
+2025-07-09 12:32:21,697 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 12:32:21,746 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "GET /api/dashboard?city=Anantapur&timeRange=7d HTTP/1.1" 200 -
+2025-07-09 12:32:21,790 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Anantapur"}
+2025-07-09 12:32:21,790 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:21,830 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 12:32:21,830 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 12:32:21,845 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 7d"}
+2025-07-09 12:32:21,853 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "POST /api/log HTTP/1.1" 200 -

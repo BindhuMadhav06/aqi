@@ -1,3 +1,24 @@
+/* CSS Variables for Theme Consistency */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1f2937;
+    --grid-color: #e5e7eb;
+    --border-color: #d1d5db;
+    --primary-color: #2c3e50;
+    --secondary-color: #27ae60;
+    --accent-color: #ff7e00;
+    --danger-color: #e74c3c;
+    --warning-color: #f59e0b;
+    --info-color: #00b7eb;
+}
+
+.dark {
+    --bg-color: #1f2937;
+    --text-color: #f9fafb;
+    --grid-color: #374151;
+    --border-color: #4b5563;
+}
+
 /* Chart Container Styles */
 .chart-container {
     position: relative;
@@ -6,10 +27,11 @@
     height: 400px;
     margin: 20px 0;
     padding: 15px;
-    background: var(--bg-color, #ffffff);
+    background: var(--bg-color);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .chart-container canvas {
@@ -17,15 +39,28 @@
     max-height: 100% !important;
 }
 
-/* Specific styling for prediction comparison chart */
-.prediction-comparison-container {
+/* Specific styling for time series chart */
+.time-series-container {
     height: 450px;
     margin-bottom: 30px;
 }
 
-.prediction-comparison-container h3 {
+.time-series-container h3 {
     margin-bottom: 15px;
-    color: var(--text-color, #1f2937);
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Specific styling for radar chart */
+.radar-container {
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.radar-container h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
     font-size: 1.25rem;
     font-weight: 600;
 }
@@ -38,9 +73,110 @@
 
 .hourly-distribution-container h3 {
     margin-bottom: 15px;
-    color: var(--text-color, #1f2937);
+    color: var(--text-color);
     font-size: 1.25rem;
     font-weight: 600;
+}
+
+/* Specific styling for future predictions chart */
+.future-predictions-container {
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.future-predictions-container h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Specific styling for multi-pollutant chart */
+.multi-pollutant-container {
+    height: 450px;
+    margin-bottom: 30px;
+}
+
+.multi-pollutant-container h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Specific styling for weather chart */
+.weather-container {
+    height: 450px;
+    margin-bottom: 30px;
+}
+
+.weather-container h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Specific styling for correlation chart */
+.correlation-container {
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.correlation-container h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Loading and Error Panels */
+#loading {
+    transition: opacity 0.5s ease-in-out;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error-panel {
+    transition: opacity 0.5s ease-in-out;
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading state for charts */
+.chart-container.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.chart-container.loading::before {
+    content: "Loading chart...";
+    font-size: 0.875rem;
+}
+
+/* Dark theme adjustments */
+.dark .chart-container {
+    background: var(--bg-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark #loading {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark #error-panel {
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive behavior */
@@ -51,11 +187,31 @@
         margin: 15px 0;
     }
     
-    .prediction-comparison-container {
+    .time-series-container {
         height: 350px;
     }
     
+    .radar-container {
+        height: 320px;
+    }
+    
     .hourly-distribution-container {
+        height: 320px;
+    }
+    
+    .future-predictions-container {
+        height: 320px;
+    }
+    
+    .multi-pollutant-container {
+        height: 350px;
+    }
+    
+    .weather-container {
+        height: 350px;
+    }
+    
+    .correlation-container {
         height: 320px;
     }
 }
@@ -67,30 +223,31 @@
         margin: 10px 0;
     }
     
-    .prediction-comparison-container {
+    .time-series-container {
         height: 280px;
+    }
+    
+    .radar-container {
+        height: 260px;
     }
     
     .hourly-distribution-container {
         height: 260px;
     }
-}
-
-/* Dark theme adjustments */
-[data-theme="dark"] .chart-container {
-    background: var(--bg-color, #1f2937);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Loading state */
-.chart-container.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color, #6b7280);
-}
-
-.chart-container.loading::before {
-    content: "Loading chart...";
-    font-size: 0.875rem;
+    
+    .future-predictions-container {
+        height: 260px;
+    }
+    
+    .multi-pollutant-container {
+        height: 280px;
+    }
+    
+    .weather-container {
+        height: 280px;
+    }
+    
+    .correlation-container {
+        height: 260px;
+    }
 }
