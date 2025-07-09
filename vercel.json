@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "aqi_prediction.py": {
-      "runtime": "python3.9"
-    }
-  },
   "builds": [
     {
       "src": "aqi_prediction.py",
       "use": "@vercel/python",
       "config": {
+        "runtime": "python3.9",
         "maxLambdaSize": "50mb"
       }
     }
