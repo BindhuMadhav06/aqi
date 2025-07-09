@@ -5,6 +5,7 @@
       "src": "aqi_prediction.py",
       "use": "@vercel/python",
       "config": {
+        "runtime": "python3.9",
         "maxLambdaSize": "50mb"
       }
     }
