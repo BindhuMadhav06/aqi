@@ -1,8 +1,0 @@
-# render.yaml
-build:
-  dockerfile: Dockerfile
-services:
-  - type: web
-    name: air-quality-monitor
-    env: docker
-    autoDeploy: true
