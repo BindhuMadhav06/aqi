@@ -11,6 +11,7 @@ import io
 import base64
 from flask import Flask, render_template, jsonify, request, send_file
 from datetime import datetime, timedelta
+from aqi import calculate_aqi  
 import threading
 import time
 import logging
