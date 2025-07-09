@@ -1,13 +1,8 @@
 # render.yaml
 build:
-  python_version: "3.9.12"
+  dockerfile: Dockerfile
 services:
   - type: web
     name: air-quality-monitor
-    env: python
-    buildCommand: "pipenv install --deploy --ignore-pipfile"
-    startCommand: "pipenv run gunicorn --bind 0.0.0.0:$PORT aqi_prediction:app"
+    env: docker
     autoDeploy: true
-    envVars:
-      - key: PYTHON_VERSION
-        value: "3.9.12"
