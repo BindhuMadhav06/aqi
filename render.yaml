@@ -1,15 +1,15 @@
 # render.yaml
 prebuild:
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt --prefer-binary
 build:
-  python_version: "3.10.12"
+  python_version: "3.9.12"
 services:
   - type: web
     name: air-quality-monitor
     env: python
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt --prefer-binary"
     startCommand: "gunicorn --bind 0.0.0.0:$PORT aqi_prediction:app"
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: "3.10.12"
+        value: "3.9.12"
