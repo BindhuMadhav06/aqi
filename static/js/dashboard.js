@@ -903,6 +903,36 @@ function hideLoadingSpinner() {
     console.log('Hiding loading spinner');
 }
 
+// Populate city dropdown
+function populateCityDropdown() {
+    fetch('/api/cities')
+        .then(response => response.json())
+        .then(data => {
+            if (data.cities) {
+                const citySelect = document.getElementById('city-select');
+                citySelect.innerHTML = '';
+                data.cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    if (city === getCurrentCity()) {
+                        option.selected = true;
+                    }
+                    citySelect.appendChild(option);
+                });
+                logClientInfo(`Populated city dropdown with: ${data.cities}`);
+            } else {
+                showError('Failed to load cities.');
+                logClientError('Failed to load cities: ' + JSON.stringify(data.error));
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching cities:', error);
+            showError('Error fetching city list.');
+            logClientError('Error fetching cities: ' + error.message);
+        });
+}
+
 function showError(message) {
     const errorPanel = document.getElementById('error-panel');
     if (errorPanel) {

@@ -1520,3 +1520,138 @@ jinja2.exceptions.UndefinedError: 'current_stats' is undefined
 2025-07-09 12:32:21,830 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "POST /api/log HTTP/1.1" 200 -
 2025-07-09 12:32:21,845 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Anantapur, timeRange: 7d"}
 2025-07-09 12:32:21,853 - INFO - 127.0.0.1 - - [09/Jul/2025 12:32:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:26:57,910 - INFO - Background cleanup task started
+2025-07-09 13:26:58,002 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-09 13:26:58,002 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-09 13:27:02,510 - INFO - City changed to Delhi, clearing cache
+2025-07-09 13:27:02,553 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 13:27:02,565 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:18,875 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:18] "GET / HTTP/1.1" 200 -
+2025-07-09 13:27:21,564 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "[36mGET /static/js/charts.js HTTP/1.1[0m" 304 -
+2025-07-09 13:27:21,564 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-09 13:27:21,579 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-07-09 13:27:21,800 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:27:21,808 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:21,816 - INFO - Returning available cities: ['Amaravati', 'Anantapur', 'Chittoor', 'Kadapa', 'Rajamahendravaram', 'Tirupati', 'Vijayawada', 'Visakhapatnam', 'Naharlagun', 'Byrnihat', 'Guwahati', 'Nagaon', 'Nalbari', 'Silchar', 'Sivasagar', 'Araria', 'Arrah', 'Aurangabad', 'Begusarai', 'Bettiah', 'Bhagalpur', 'Bihar Sharif', 'Buxar', 'Chhapra', 'Darbhanga', 'Gaya', 'Hajipur', 'Katihar', 'Kishanganj', 'Manguraha', 'Motihari', 'Munger', 'Muzaffarpur', 'Patna', 'Purnia', 'Rajgir', 'Saharsa', 'Samastipur', 'Sasaram', 'Siwan', 'Chandigarh', 'Bhilai', 'Bilaspur', 'Chhal', 'Korba', 'Kunjemura', 'Milupara', 'Raipur', 'Tumidih', 'Delhi', 'Ahmedabad', 'Ankleshwar', 'Gandhinagar', 'Nandesari', 'Surat', 'Vapi', 'Vatva', 'Ambala', 'Bahadurgarh', 'Ballabgarh', 'Bhiwani', 'Charkhi Dadri', 'Dharuhera', 'Faridabad', 'Fatehabad', 'Gurugram', 'Hisar', 'Jind', 'Kaithal', 'Karnal', 'Kurukshetra', 'Mandikhera', 'Manesar', 'Narnaul', 'Palwal', 'Panchkula', 'Panipat', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamuna Nagar', 'Baddi', 'Srinagar', 'Dhanbad', 'Jorapokhar', 'Bagalkot', 'Belgaum', 'Bengaluru', 'Bidar', 'Chamarajanagar', 'Chikkaballapur', 'Chikkamagaluru', 'Davanagere', 'Dharwad', 'Gadag', 'Hassan', 'Haveri', 'Hubballi', 'Kalaburagi', 'Kolar', 'Koppal', 'Madikeri', 'Mangalore', 'Mysuru', 'Raichur', 'Ramanagara', 'Shivamogga', 'Tumakuru', 'Udupi', 'Vijayapura', 'Yadgir', 'Eloor', 'Ernakulam', 'Kannur', 'Kochi', 'Kollam', 'Kozhikode', 'Thiruvananthapuram', 'Thrissur', 'Bhopal', 'Damoh', 'Dewas', 'Gwalior', 'Indore', 'Jabalpur', 'Katni', 'Maihar', 'Mandideep', 'Pithampur', 'Ratlam', 'Sagar', 'Satna', 'Singrauli', 'Ujjain', 'Aurangabad', 'Chandrapur', 'Kalyan', 'Mumbai', 'Nagpur', 'Nashik', 'Navi Mumbai', 'Pune', 'Solapur', 'Thane', 'Imphal', 'Shillong', 'Aizawl', 'Kohima', 'Baripada', 'Bileipada', 'Brajrajnagar', 'Keonjhar', 'Nayagarh', 'Rairangpur', 'Rourkela', 'Suakati', 'Talcher', 'Tensa', 'Puducherry', 'Amritsar', 'Bathinda', 'Jalandhar', 'Khanna', 'Ludhiana', 'Mandi Gobindgarh', 'Patiala', 'Rupnagar', 'Ajmer', 'Alwar', 'Banswara', 'Barmer', 'Bharatpur', 'Bhiwadi', 'Bikaner', 'Chittorgarh', 'Churu', 'Dausa', 'Dholpur', 'Hanumangarh', 'Jaipur', 'Jaisalmer', 'Jhalawar', 'Jhunjhunu', 'Jodhpur', 'Karauli', 'Kota', 'Pali', 'Pratapgarh', 'Rajsamand', 'Sawai Madhopur', 'Sikar', 'Sirohi', 'Sri Ganganagar', 'Udaipur', 'Gangtok', 'Ariyalur', 'Chengalpattu', 'Chennai', 'Coimbatore', 'Cuddalore', 'Dindigul', 'Gummidipoondi', 'Hosur', 'Kanchipuram', 'Ooty', 'Palkalaiperur', 'Ramanathapuram', 'Salem', 'Thoothukudi', 'Tirupur', 'Vellore', 'Hyderabad', 'Agartala', 'Agra', 'Baghpat', 'Bareilly', 'Bulandshahr', 'Firozabad', 'Ghaziabad', 'Gorakhpur', 'Greater Noida', 'Hapur', 'Jhansi', 'Kanpur', 'Khurja', 'Lucknow', 'Meerut', 'Moradabad', 'Muzaffarnagar', 'Noida', 'Prayagraj', 'Varanasi', 'Vrindavan', 'Dehradun', 'Kashipur', 'Rishikesh', 'Asansol', 'Durgapur', 'Haldia', 'Howrah', 'Kolkata', 'Siliguri']
+2025-07-09 13:27:21,835 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "GET /api/cities HTTP/1.1" 200 -
+2025-07-09 13:27:21,921 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:21,923 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:21,973 - INFO - Client log: {"level": "info", "message": "Populated city dropdown with: Amaravati,Anantapur,Chittoor,Kadapa,Rajamahendravaram,Tirupati,Vijayawada,Visakhapatnam,Naharlagun,Byrnihat,Guwahati,Nagaon,Nalbari,Silchar,Sivasagar,Araria,Arrah,Aurangabad,Begusarai,Bettiah,Bhagalpur,Bihar Sharif,Buxar,Chhapra,Darbhanga,Gaya,Hajipur,Katihar,Kishanganj,Manguraha,Motihari,Munger,Muzaffarpur,Patna,Purnia,Rajgir,Saharsa,Samastipur,Sasaram,Siwan,Chandigarh,Bhilai,Bilaspur,Chhal,Korba,Kunjemura,Milupara,Raipur,Tumidih,Delhi,Ahmedabad,Ankleshwar,Gandhinagar,Nandesari,Surat,Vapi,Vatva,Ambala,Bahadurgarh,Ballabgarh,Bhiwani,Charkhi Dadri,Dharuhera,Faridabad,Fatehabad,Gurugram,Hisar,Jind,Kaithal,Karnal,Kurukshetra,Mandikhera,Manesar,Narnaul,Palwal,Panchkula,Panipat,Rohtak,Sirsa,Sonipat,Yamuna Nagar,Baddi,Srinagar,Dhanbad,Jorapokhar,Bagalkot,Belgaum,Bengaluru,Bidar,Chamarajanagar,Chikkaballapur,Chikkamagaluru,Davanagere,Dharwad,Gadag,Hassan,Haveri,Hubballi,Kalaburagi,Kolar,Koppal,Madikeri,Mangalore,Mysuru,Raichur,Ramanagara,Shivamogga,Tumakuru,Udupi,Vijayapura,Yadgir,Eloor,Ernakulam,Kannur,Kochi,Kollam,Kozhikode,Thiruvananthapuram,Thrissur,Bhopal,Damoh,Dewas,Gwalior,Indore,Jabalpur,Katni,Maihar,Mandideep,Pithampur,Ratlam,Sagar,Satna,Singrauli,Ujjain,Aurangabad,Chandrapur,Kalyan,Mumbai,Nagpur,Nashik,Navi Mumbai,Pune,Solapur,Thane,Imphal,Shillong,Aizawl,Kohima,Baripada,Bileipada,Brajrajnagar,Keonjhar,Nayagarh,Rairangpur,Rourkela,Suakati,Talcher,Tensa,Puducherry,Amritsar,Bathinda,Jalandhar,Khanna,Ludhiana,Mandi Gobindgarh,Patiala,Rupnagar,Ajmer,Alwar,Banswara,Barmer,Bharatpur,Bhiwadi,Bikaner,Chittorgarh,Churu,Dausa,Dholpur,Hanumangarh,Jaipur,Jaisalmer,Jhalawar,Jhunjhunu,Jodhpur,Karauli,Kota,Pali,Pratapgarh,Rajsamand,Sawai Madhopur,Sikar,Sirohi,Sri Ganganagar,Udaipur,Gangtok,Ariyalur,Chengalpattu,Chennai,Coimbatore,Cuddalore,Dindigul,Gummidipoondi,Hosur,Kanchipuram,Ooty,Palkalaiperur,Ramanathapuram,Salem,Thoothukudi,Tirupur,Vellore,Hyderabad,Agartala,Agra,Baghpat,Bareilly,Bulandshahr,Firozabad,Ghaziabad,Gorakhpur,Greater Noida,Hapur,Jhansi,Kanpur,Khurja,Lucknow,Meerut,Moradabad,Muzaffarnagar,Noida,Prayagraj,Varanasi,Vrindavan,Dehradun,Kashipur,Rishikesh,Asansol,Durgapur,Haldia,Howrah,Kolkata,Siliguri"}
+2025-07-09 13:27:21,980 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:21] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:31,199 - INFO - City changed to Rajamahendravaram, clearing cache
+2025-07-09 13:27:31,266 - INFO - Data loaded from rajamahendravaram_data.csv for Rajamahendravaram! Shape: (5000, 15)
+2025-07-09 13:27:31,298 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:31,315 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:31] "GET /api/dashboard?city=Rajamahendravaram&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:31,337 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Rajamahendravaram"}
+2025-07-09 13:27:31,346 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:31] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:31,381 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:31,383 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:31] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:31,385 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Rajamahendravaram, timeRange: 24h"}
+2025-07-09 13:27:31,385 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:31] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:34,690 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 13:27:34,743 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 13:27:34,778 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:34,790 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:34] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:34,805 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 13:27:34,807 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:34,835 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:34,839 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:34,849 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 13:27:34,852 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:40,345 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 13:27:40,390 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 13:27:40,428 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:40,441 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:40] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:40,468 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 13:27:40,470 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:40,501 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:40,509 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:40,530 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 13:27:40,532 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:40] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:42,059 - INFO - City changed to Amaravati, clearing cache
+2025-07-09 13:27:42,170 - INFO - Data loaded from amaravati_data.csv for Amaravati! Shape: (5000, 15)
+2025-07-09 13:27:42,241 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:42,294 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:42] "GET /api/dashboard?city=Amaravati&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:42,327 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Amaravati"}
+2025-07-09 13:27:42,331 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:42] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:42,362 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:42,369 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:42] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:42,376 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Amaravati, timeRange: 24h"}
+2025-07-09 13:27:42,411 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:42] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:50,939 - INFO - City changed to Rajamahendravaram, clearing cache
+2025-07-09 13:27:50,983 - INFO - Data loaded from rajamahendravaram_data.csv for Rajamahendravaram! Shape: (5000, 15)
+2025-07-09 13:27:50,998 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:51,014 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:51] "GET /api/dashboard?city=Rajamahendravaram&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:51,028 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Rajamahendravaram"}
+2025-07-09 13:27:51,028 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:51] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:51,060 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:51,060 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:51] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:51,063 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Rajamahendravaram, timeRange: 24h"}
+2025-07-09 13:27:51,063 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:51] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:56,760 - INFO - City changed to Visakhapatnam, clearing cache
+2025-07-09 13:27:56,837 - INFO - Data loaded from visakhapatnam_data.csv for Visakhapatnam! Shape: (5000, 15)
+2025-07-09 13:27:56,862 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:27:56,892 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:56] "GET /api/dashboard?city=Visakhapatnam&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:27:56,957 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Visakhapatnam"}
+2025-07-09 13:27:56,959 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:56] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:56,979 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:27:57,019 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Visakhapatnam, timeRange: 24h"}
+2025-07-09 13:27:57,022 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:57] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:27:57,022 - INFO - 127.0.0.1 - - [09/Jul/2025 13:27:57] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:09,646 - INFO - City changed to Delhi, clearing cache
+2025-07-09 13:28:09,695 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 13:28:09,728 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:28:09,743 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:09] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:28:09,764 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:09,766 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:09] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:09,804 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:09,810 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Delhi, timeRange: 24h"}
+2025-07-09 13:28:09,812 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:09] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:09,816 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:09] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:20,047 - INFO - City changed to Delhi, clearing cache
+2025-07-09 13:28:20,087 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 13:28:20,105 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:28:20,119 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:20] "GET /api/dashboard?city=Delhi&timeRange=6h HTTP/1.1" 200 -
+2025-07-09 13:28:20,139 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:20,139 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:20] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:20,162 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:20,163 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Delhi, timeRange: 6h"}
+2025-07-09 13:28:20,166 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:20] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:20,167 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:20] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:24,219 - INFO - City changed to Delhi, clearing cache
+2025-07-09 13:28:24,267 - INFO - Data loaded from delhi_data.csv for Delhi! Shape: (5000, 15)
+2025-07-09 13:28:24,300 - INFO - Data shape after removing NaN: (5000, 15)
+2025-07-09 13:28:24,308 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:24] "GET /api/dashboard?city=Delhi&timeRange=24h HTTP/1.1" 200 -
+2025-07-09 13:28:24,326 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:24,326 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:24,356 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:24,361 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:24,363 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Delhi, timeRange: 24h"}
+2025-07-09 13:28:24,366 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:24] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:28,879 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:28,882 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:28] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:28,940 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:28,940 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:28] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:32,785 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:32,788 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:32] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:32,848 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:32,861 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:32] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:34,220 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:34,222 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:34,272 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:34,278 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:34] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:35,327 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:35,329 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:35] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:35,374 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:35,374 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:35] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:37,097 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:37,097 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:37] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:37,195 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:37,196 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:37] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:37,792 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-09 13:28:37,796 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:37] "POST /api/log HTTP/1.1" 200 -
+2025-07-09 13:28:37,872 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-09 13:28:37,877 - INFO - 127.0.0.1 - - [09/Jul/2025 13:28:37] "POST /api/log HTTP/1.1" 200 -
