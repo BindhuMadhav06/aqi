@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "/aqi_prediction.py"
     }
-  ]
+  ],
+  "functions": {
+    "aqi_prediction.py": {
+      "maxDuration": 30
+    }
+  }
 }
