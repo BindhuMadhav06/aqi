@@ -1902,3 +1902,39 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\
 2025-07-10 00:21:43,236 - INFO - 127.0.0.1 - - [10/Jul/2025 00:21:43] "POST /api/log HTTP/1.1" 200 -
 2025-07-10 00:21:43,244 - INFO - Client log: {"level": "info", "message": "Dashboard updated for city: Guwahati, timeRange: 12h"}
 2025-07-10 00:21:43,258 - INFO - 127.0.0.1 - - [10/Jul/2025 00:21:43] "POST /api/log HTTP/1.1" 200 -
+2025-07-10 10:29:45,398 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.63:5000
+2025-07-10 10:29:45,398 - INFO - [33mPress CTRL+C to quit[0m
+2025-07-10 10:29:49,061 - ERROR - Error loading cities for dropdown: [Errno 2] No such file or directory: 'Stations_Info.csv'
+2025-07-10 10:29:49,061 - INFO - City changed to Delhi, clearing cache
+2025-07-10 10:29:49,067 - WARNING - File not found for Delhi: [Errno 2] No such file or directory: 'Stations_Info.csv', creating sample data
+2025-07-10 10:29:49,114 - INFO - Created sample data for Delhi! Shape: (72, 14)
+2025-07-10 10:30:27,344 - INFO - 127.0.0.1 - - [10/Jul/2025 10:30:27] "GET / HTTP/1.1" 200 -
+2025-07-10 10:30:40,175 - INFO - 127.0.0.1 - - [10/Jul/2025 10:30:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-10 10:32:12,135 - INFO - Client log: {"level": "info", "message": "Rendering charts for view: overview and city: Delhi"}
+2025-07-10 10:32:12,135 - INFO - 127.0.0.1 - - [10/Jul/2025 10:32:12] "POST /api/log HTTP/1.1" 200 -
+2025-07-10 10:32:16,977 - INFO - Client log: {"level": "error", "message": "PredictionComparisonChart: Missing canvas or data"}
+2025-07-10 10:32:16,977 - INFO - 127.0.0.1 - - [10/Jul/2025 10:32:16] "POST /api/log HTTP/1.1" 200 -
+2025-07-10 10:32:16,998 - INFO - Client log: {"level": "info", "message": "Populated city dropdown with: Amaravati,Anantapur,Chittoor,Kadapa,Rajamahendravaram,Tirupati,Vijayawada,Visakhapatnam,Naharlagun,Byrnihat,Guwahati,Nagaon,Nalbari,Silchar,Sivasagar,Araria,Arrah,Aurangabad,Begusarai,Bettiah,Bhagalpur,Bihar Sharif,Buxar,Chhapra,Darbhanga,Gaya,Hajipur,Katihar,Kishanganj,Manguraha,Motihari,Munger,Muzaffarpur,Patna,Purnia,Rajgir,Saharsa,Samastipur,Sasaram,Siwan,Chandigarh,Bhilai,Bilaspur,Chhal,Korba,Kunjemura,Milupara,Raipur,Tumidih,Delhi,Ahmedabad,Ankleshwar,Gandhinagar,Nandesari,Surat,Vapi,Vatva,Ambala,Bahadurgarh,Ballabgarh,Bhiwani,Charkhi Dadri,Dharuhera,Faridabad,Fatehabad,Gurugram,Hisar,Jind,Kaithal,Karnal,Kurukshetra,Mandikhera,Manesar,Narnaul,Palwal,Panchkula,Panipat,Rohtak,Sirsa,Sonipat,Yamuna Nagar,Baddi,Srinagar,Dhanbad,Jorapokhar,Bagalkot,Belgaum,Bengaluru,Bidar,Chamarajanagar,Chikkaballapur,Chikkamagaluru,Davanagere,Dharwad,Gadag,Hassan,Haveri,Hubballi,Kalaburagi,Kolar,Koppal,Madikeri,Mangalore,Mysuru,Raichur,Ramanagara,Shivamogga,Tumakuru,Udupi,Vijayapura,Yadgir,Eloor,Ernakulam,Kannur,Kochi,Kollam,Kozhikode,Thiruvananthapuram,Thrissur,Bhopal,Damoh,Dewas,Gwalior,Indore,Jabalpur,Katni,Maihar,Mandideep,Pithampur,Ratlam,Sagar,Satna,Singrauli,Ujjain,Aurangabad,Chandrapur,Kalyan,Mumbai,Nagpur,Nashik,Navi Mumbai,Pune,Solapur,Thane,Imphal,Shillong,Aizawl,Kohima,Baripada,Bileipada,Brajrajnagar,Keonjhar,Nayagarh,Rairangpur,Rourkela,Suakati,Talcher,Tensa,Puducherry,Amritsar,Bathinda,Jalandhar,Khanna,Ludhiana,Mandi Gobindgarh,Patiala,Rupnagar,Ajmer,Alwar,Banswara,Barmer,Bharatpur,Bhiwadi,Bikaner,Chittorgarh,Churu,Dausa,Dholpur,Hanumangarh,Jaipur,Jaisalmer,Jhalawar,Jhunjhunu,Jodhpur,Karauli,Kota,Pali,Pratapgarh,Rajsamand,Sawai Madhopur,Sikar,Sirohi,Sri Ganganagar,Udaipur,Gangtok,Ariyalur,Chengalpattu,Chennai,Coimbatore,Cuddalore,Dindigul,Gummidipoondi,Hosur,Kanchipuram,Ooty,Palkalaiperur,Ramanathapuram,Salem,Thoothukudi,Tirupur,Vellore,Hyderabad,Agartala,Agra,Baghpat,Bareilly,Bulandshahr,Firozabad,Ghaziabad,Gorakhpur,Greater Noida,Hapur,Jhansi,Kanpur,Khurja,Lucknow,Meerut,Moradabad,Muzaffarnagar,Noida,Prayagraj,Varanasi,Vrindavan,Dehradun,Kashipur,Rishikesh,Asansol,Durgapur,Haldia,Howrah,Kolkata,Siliguri"}
+2025-07-10 10:32:16,999 - INFO - 127.0.0.1 - - [10/Jul/2025 10:32:16] "POST /api/log HTTP/1.1" 200 -
+2025-07-10 10:32:16,999 - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "D:\madhav\arshu\arshu\aqi_prediction.py", line 490, in favicon
+    return send_file(os.path.join(app.root_path, 'static', 'favicon.ico'))
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\helpers.py", line 504, in send_file
+    return werkzeug.utils.send_file(  # type: ignore[return-value]
+  File "C:\Users\G Bindhu Madhav\AppData\Local\Programs\Python\Python39\lib\site-packages\werkzeug\utils.py", line 427, in send_file
+    stat = os.stat(path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'D:\\madhav\\arshu\\arshu\\static\\favicon.ico'
+2025-07-10 10:32:17,015 - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-07-10 10:32:17,015 - INFO - 127.0.0.1 - - [10/Jul/2025 10:32:17] "[35m[1mGET /favicon.ico HTTP/1.1[0m" 500 -
